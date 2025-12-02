@@ -42,6 +42,7 @@ def analyse_result(waters, predicted_waters, threshold=0.5):
         else:
             water_classes[(chain, res)] = 0
 
+    print(sorted(closest_distances.values()))
     return {
         'closest_water_distances': closest_distances,
         'water_classes': water_classes,
