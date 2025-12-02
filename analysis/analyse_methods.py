@@ -50,15 +50,16 @@ def analyse_result(waters, predicted_waters, threshold=0.5):
 
 def summarize_results(all_results):
     for method, method_results in all_results.items():
+        print('# Method: {method}')
         for ligand, ligand_results in method_results.items():
             closest_water_distances = ligand_results['closest_water_distances']
             water_classes = ligand_results['water_classes']
             ligand_recall = sum(water_classes.values()) / len(water_classes)
             ligand_precision = sum(water_classes.values()) / ligand_results['num_waters']
 
-            print(f'# {ligand[0]} {ligand[1]} {ligand[2]}')
-            print(f'\tRecall: {ligand_recall}')
-            print(f'\tPrecision: {ligand_precision}')
+            print(f'\t# {ligand[0]} {ligand[1]} {ligand[2]}')
+            print(f'\t\tRecall: {ligand_recall}')
+            print(f'\t\tPrecision: {ligand_precision}')
 
     ...
 
