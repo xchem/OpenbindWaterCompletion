@@ -28,17 +28,6 @@ def get_ligand_waters(chain, res, st, threshold=7.0):
     """
     # st = gemmi.read_structure(str(bound_state_path))
 
-    print(st)
-    print([chain, res])
-    print(st[0])
-    print(st[0][chain])
-    print(st[0][chain][res])
-    for model in st:
-        for _chain in model:
-            if _chain.name == chain:
-                for _res in _chain:
-                    print(_res)
-
     ligand_res = st[0][chain][res][0]
 
     # Get the ligand atoms

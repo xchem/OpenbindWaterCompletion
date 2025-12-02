@@ -36,11 +36,6 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
     Return the waters in the base structure around the ligand with no changes.
     """
     st = gemmi.read_structure(str(structure))
-    for model in st:
-        for _chain in model:
-            if _chain.name == chain:
-                for _res in _chain:
-                    print(_res)
 
     # Clear the waters
     st_desolv = remove_waters(st)
