@@ -23,7 +23,7 @@ def get_waters(st, waters_pdb,  chain, res,):
 
     # return [x for x in ligand_waters.values()]
     waters = []
-    for _model in st:
+    for _model in waters_pdb:
         for _chain in _model:
             for _res in _chain:
                 for _atom in _res:
