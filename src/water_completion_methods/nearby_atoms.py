@@ -30,6 +30,9 @@ def get_ligand_waters(chain, res, st, threshold=7.0):
 
     print(st)
     print([chain, res])
+    print(st[0])
+    print(st[0][chain])
+    print(st[0][chain][res])
     ligand_res = st[0][chain][res][0]
 
     # Get the ligand atoms
