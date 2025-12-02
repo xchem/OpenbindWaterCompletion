@@ -123,10 +123,11 @@ if __name__ == "__main__":
 
     methods = {
         'base': base_structure_waters,
-        'findwaters_sigma_0.1': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=0.1),
-        'findwaters_sigma_1.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=1.0),
         'findwaters_sigma_2.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=2.0),
-        'findwaters_sigma_3.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=3.0)
+        'findwaters_sigma_3.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=3.0),
+        'findwaters_sigma_4.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=4.0),
+        'findwaters_sigma_5.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=5.0),
+        
         # '': ...,
     }
     data = {
