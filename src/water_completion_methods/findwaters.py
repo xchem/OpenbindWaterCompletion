@@ -71,6 +71,7 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
     # os.remove(waters_pdb)
     # os.remove(desolv_pdb)
 
+    print(f'Got {len(waters)} waters')
     return waters
 
 
