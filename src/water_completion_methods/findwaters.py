@@ -8,9 +8,9 @@ from water_completion_methods.nearby_atoms import get_ligand_waters
 SCRIPT = "module load ccp4; findwaters --pdbin {pdb_in_filename} --mapin {map_file} --pdbout {waters_filename} --sigma {sigma_level} --min-dist {min_dist_to_protein} --max-dist {max_dist_to_protein}"
 
 def remove_waters(st):
-    st.clone().remove_waters()
+    new_st = st.clone().remove_waters()
 
-    return st
+    return new_st
     
 def get_waters(st_desolv, waters_pdb,  chain, res,):
     water_st = gemmi.read_structure(waters_pdb)
