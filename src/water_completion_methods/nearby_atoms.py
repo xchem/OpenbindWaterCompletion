@@ -33,6 +33,11 @@ def get_ligand_waters(chain, res, st, threshold=7.0):
     print(st[0])
     print(st[0][chain])
     print(st[0][chain][res])
+    for model in st:
+        for chain in model:
+            if chain.name == chain:
+                for res in chain:
+                    print(res)
     ligand_res = st[0][chain][res][0]
 
     # Get the ligand atoms
