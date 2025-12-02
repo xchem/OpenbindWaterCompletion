@@ -15,7 +15,7 @@ def remove_waters(st):
     return new_st
     
 def get_waters(st, waters_pdb,  chain, res,):
-    # water_st = gemmi.read_structure(waters_pdb)
+    water_st = gemmi.read_structure(waters_pdb)
 
     # water_st[0].add_chain(st[0][chain])
 
@@ -23,7 +23,7 @@ def get_waters(st, waters_pdb,  chain, res,):
 
     # return [x for x in ligand_waters.values()]
     waters = []
-    for _model in waters_pdb:
+    for _model in water_st:
         for _chain in _model:
             for _res in _chain:
                 for _atom in _res:
