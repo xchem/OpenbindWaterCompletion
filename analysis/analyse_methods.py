@@ -58,6 +58,8 @@ def summarize_results(all_results):
             ligand_precision = sum(water_classes.values()) / ligand_results['num_waters']
 
             print(f'\t# {ligand[0]} {ligand[1]} {ligand[2]}')
+
+            print(f'\t\Number of waters predicted near ligand: {ligand_results["num_waters"]}')
             print(f'\t\tRecall: {ligand_recall}')
             print(f'\t\tPrecision: {ligand_precision}')
 
@@ -91,7 +93,6 @@ def get_predicted_ligand_waters(
     ligand_waters = {}
     for water_atom_id, distances in zip(water_atoms, distance_matrix):
         min_dist = min(distances)
-        print(min_dist)
         if min_dist < threshold:
             ligand_waters[water_atom_id] = water_atoms[water_atom_id]
 
