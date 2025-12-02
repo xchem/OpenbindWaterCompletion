@@ -25,8 +25,7 @@ def analyse_result(waters, predicted_waters, threshold=0.5):
     Iterate over known waters, getting the distance to the closest predicted water
     Classify as positive/negative on whether they are within 0.5A
     """
-
-    
+    # 
     closest_distances = {}
     water_classes = {}
     for (chain, res), (x,y,z) in waters.items():
@@ -92,6 +91,7 @@ def get_predicted_ligand_waters(
     ligand_waters = {}
     for water_atom_id, distances in zip(water_atoms, distance_matrix):
         min_dist = min(distances)
+        print(min_dist)
         if min_dist < threshold:
             ligand_waters[water_atom_id] = water_atoms[water_atom_id]
 
@@ -111,7 +111,7 @@ def analyse_methods(methods, data):
                 chain,
                 res,
                 )
-            result_analysis = analyse_result(waters, predicted_ligand_waters)
+            result_analysis = analyse_result(waters, predicted_ligand_waters,)
             all_results[method_name][(dtag, chain, res)] = result_analysis
 
     # Summarize the results
