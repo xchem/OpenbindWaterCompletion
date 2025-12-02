@@ -1,5 +1,6 @@
 import subprocess
 import os 
+import time 
 
 import gemmi 
 
@@ -41,11 +42,11 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
     st_desolv = remove_waters(st)
 
     # Output the transformed file
-    desolv_pdb = 'desolv.pdb'
+    desolv_pdb = f'desolv_{time.time()}.pdb'
     st_desolv.write_minimal_pdb(desolv_pdb)
 
     # Run findwaters
-    waters_pdb = 'waters.pdb'
+    waters_pdb = f'waters_{time.time()}.pdb'
     p = subprocess.Popen(
         SCRIPT.format(
             pdb_in_filename=desolv_pdb, 
