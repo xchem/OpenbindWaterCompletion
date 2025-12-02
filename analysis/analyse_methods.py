@@ -50,7 +50,7 @@ def analyse_result(waters, predicted_waters, threshold=0.5):
 
 def summarize_results(all_results):
     for method, method_results in all_results.items():
-        print('# Method: {method}')
+        print(f'# Method: {method}')
         for ligand, ligand_results in method_results.items():
             closest_water_distances = ligand_results['closest_water_distances']
             water_classes = ligand_results['water_classes']
@@ -121,6 +121,7 @@ if __name__ == "__main__":
 
     methods = {
         'base': base_structure_waters,
+        'findwaters_sigma_0.1': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=0.1),
         'findwaters_sigma_1.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=1.0),
         'findwaters_sigma_2.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=2.0),
         'findwaters_sigma_3.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=3.0)
