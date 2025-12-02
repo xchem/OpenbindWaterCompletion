@@ -8,7 +8,7 @@ from water_completion_methods.nearby_atoms import get_ligand_waters
 SCRIPT = "module load ccp4; findwaters --pdbin {pdb_in_filename} --mapin {map_file} --pdbout {waters_filename} --sigma {sigma_level} --min-dist {min_dist_to_protein} --max-dist {max_dist_to_protein}"
 
 def remove_waters(st):
-    st.remove_waters()
+    st.clone().remove_waters()
 
     return st
     
@@ -55,7 +55,7 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
     print(f'STDERR: {stderr}')
 
     # Get ligand waters from output file
-    waters = get_waters(st_desolv, waters_pdb, chain, res,)
+    waters = get_waters(st, waters_pdb, chain, res,)
 
     # Cleanup
     os.remove(waters_pdb)
