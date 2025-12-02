@@ -58,8 +58,8 @@ def summarize_results(all_results):
             ligand_precision = sum(water_classes.values()) / ligand_results['num_waters']
 
             print(f'\t# {ligand[0]} {ligand[1]} {ligand[2]}')
-
-            print(f'\t\Number of waters predicted near ligand: {ligand_results["num_waters"]}')
+            num_waters = ligand_results["num_waters"]
+            print(f'\t\Number of waters predicted near ligand: {num_waters}')
             print(f'\t\tRecall: {ligand_recall}')
             print(f'\t\tPrecision: {ligand_precision}')
 
