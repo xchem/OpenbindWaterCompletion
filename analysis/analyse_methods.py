@@ -102,7 +102,7 @@ def analyse_methods(methods, data):
     for method_name, method in methods.items():
         all_results[method_name] = {}
         for (dtag, chain, res), (structure, bound_structure, xmap, waters) in data.items():
-            predicted_waters = method(structure, bound_structure, xmap, chain, res)
+            predicted_waters = method(structure, xmap, chain, res)
             predicted_ligand_waters = get_predicted_ligand_waters(
                 bound_structure, 
                 predicted_waters,
