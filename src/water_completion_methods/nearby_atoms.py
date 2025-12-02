@@ -36,7 +36,7 @@ def get_ligand_waters(chain, res, st, threshold=7.0):
     for model in st:
         for _chain in model:
             if _chain.name == chain:
-                for _res in chain:
+                for _res in _chain:
                     print(_res)
 
     ligand_res = st[0][chain][res][0]
