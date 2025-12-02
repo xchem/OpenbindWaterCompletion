@@ -61,8 +61,7 @@ def summarize_results(all_results):
             num_waters = ligand_results["num_waters"]
             
             print(
-                f'\t\Number of waters predicted near ligand: {num_waters}'
-                )
+                f'\t\Number of waters predicted near ligand: {num_waters}')
 
             print(f'\t\tRecall: {ligand_recall}')
             print(f'\t\tPrecision: {ligand_precision}')
