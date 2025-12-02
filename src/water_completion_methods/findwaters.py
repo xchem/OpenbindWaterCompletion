@@ -14,14 +14,22 @@ def remove_waters(st):
     return new_st
     
 def get_waters(st, waters_pdb,  chain, res,):
-    water_st = gemmi.read_structure(waters_pdb)
+    # water_st = gemmi.read_structure(waters_pdb)
 
-    water_st[0].add_chain(st[0][chain])
+    # water_st[0].add_chain(st[0][chain])
 
-    ligand_waters = get_ligand_waters(chain, res, water_st, )
+    # ligand_waters = get_ligand_waters(chain, res, water_st, )
 
-    return [x for x in ligand_waters.values()]
+    # return [x for x in ligand_waters.values()]
+    waters = []
+    for _model in st:
+        for _chain in _model:
+            for _res in _chain:
+                for _atom in _res:
+                    pos = _atom.pos
+                    waters.append([pos.x, pos.y, pos.z])
     
+    return waters
 
 def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.0):
     """
