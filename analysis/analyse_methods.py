@@ -28,6 +28,7 @@ def analyse_result(waters, predicted_waters, threshold=0.5):
     # 
     closest_distances = {}
     water_classes = {}
+    unmatched_waters = []
     for (chain, res), (x,y,z) in waters.items():
         distances = [
             np.linalg.norm([x-x_mov, y-y_mov, z-z_mov]) 
@@ -40,6 +41,9 @@ def analyse_result(waters, predicted_waters, threshold=0.5):
             water_classes[(chain,res)] = 1
         else:
             water_classes[(chain, res)] = 0
+            unmatched_waters.append((chain,res))
+
+    print(unmatched_waters)
 
     print(sorted(closest_distances.values()))
     return {
