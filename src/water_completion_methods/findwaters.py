@@ -47,7 +47,7 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
     st_desolv.write_minimal_pdb(desolv_pdb)
 
     # Run findwaters
-    waters_pdb = f'waters.pdb'
+    waters_pdb = f'waters_{round(float(sigma), 2)}.pdb'
     p = subprocess.Popen(
         SCRIPT.format(
             pdb_in_filename=desolv_pdb, 
