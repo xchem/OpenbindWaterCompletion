@@ -4,7 +4,7 @@ import numpy as np
 import gemmi
 
 from water_completion_methods.base_structure_waters import base_structure_waters
-from water_completion_methods.findwaters import findwaters
+from water_completion_methods.findwaters import findwaters, findwaters_multiple
 from water_completion_methods.nearby_atoms import get_ligand_waters
 
 def get_water_data(data_path, data):
@@ -127,7 +127,8 @@ if __name__ == "__main__":
         'findwaters_sigma_3.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=3.0),
         'findwaters_sigma_4.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=4.0),
         'findwaters_sigma_5.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=5.0),
-        
+        'findwaters_multiple': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res,),
+
         # '': ...,
     }
     data = {
