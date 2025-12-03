@@ -3,6 +3,7 @@ import os
 import time 
 
 import gemmi 
+import numpy as np
 
 from water_completion_methods.nearby_atoms import get_ligand_waters
 
@@ -76,3 +77,11 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
 
 
     ...
+
+
+def findwaters_multiple(structure, xmap, chain, res, sigmas=np.linspace(3.5,0.7,num=28), min_dist=1.4, max_dist=7.0)
+    waters = []
+    for sigma in sigmas:
+        waters += findwaters(structure,xmap, chain, res, sigma=sigma)
+
+    return waters
