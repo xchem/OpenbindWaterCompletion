@@ -96,9 +96,18 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
 def findwaters_multiple(structure, xmap, chain, res, sigmas=np.linspace(10.0,0.7,num=93), min_dist=1.4, max_dist=7.0):
     waters = []
     for sigma in sigmas:
-        new_waters = findwaters(structure,xmap, chain, res, sigma=sigma, min_dist=min_dist, max_dist=max_dist)
+        new_waters = findwaters(
+            structure,
+            xmap,
+            chain, 
+            res, 
+            sigma=sigma, 
+            min_dist=min_dist, 
+            max_dist=max_dist,
+            )
         if len(new_waters) == 0:
             continue
+
         if len(waters) != 0:
             nearby_waters = get_nearby_atoms(waters, new_waters, threshold=0.5)
             for new_water, nearby in zip(new_waters, nearby_waters):
@@ -106,4 +115,5 @@ def findwaters_multiple(structure, xmap, chain, res, sigmas=np.linspace(10.0,0.7
                     new_waters.append(new_water)
         else:
             waters += new_waters
+    
     return waters
