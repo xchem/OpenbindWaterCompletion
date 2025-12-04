@@ -39,9 +39,9 @@ def map_sigma(xmap, sigma):
     grid_array = np.array(grid, copy=False)
     std = np.std(grid_array)
     non_zero_std = np.std(grid_array[grid_array != 0.0])
+    new_sigma = sigma * (non_zero_std / std)
 
     print(f'Stds : with zero vs without: {std} / {non_zero_std}. New Sigma: {round(float(new_sigma), 2)}')
-    new_sigma = sigma * (non_zero_std / std)
     return new_sigma
 
 def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.0):
