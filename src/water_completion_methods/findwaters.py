@@ -5,7 +5,7 @@ import time
 import gemmi 
 import numpy as np
 
-from water_completion_methods.nearby_atoms import get_ligand_waters
+from water_completion_methods.nearby_atoms import get_ligand_waters, get_nearby_atoms
 
 SCRIPT = "module load ccp4; findwaters --pdbin {pdb_in_filename} --mapin {map_file} --pdbout {waters_filename} --sigma {sigma_level} --min-dist {min_dist_to_protein} --max-dist {max_dist_to_protein}"
 
@@ -96,6 +96,10 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
 def findwaters_multiple(structure, xmap, chain, res, sigmas=np.linspace(10.0,0.7,num=93), min_dist=1.4, max_dist=7.0):
     waters = []
     for sigma in sigmas:
-        waters += findwaters(structure,xmap, chain, res, sigma=sigma)
+        new_waters = findwaters(structure,xmap, chain, res, sigma=sigma)
+        nearby_waters = get_nearby_atoms(waters, new_waters, threshold=0.5)
+        for new_water, nearby in zip(new_waters, nearby_waters):
+            if not nearby:
+                new_waters.append(new_water)
 
     return waters
