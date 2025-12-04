@@ -6,6 +6,7 @@ def get_nearby_atoms(reference, moving, threshold=7.0):
     moving_atom_array = np.array(moving)
 
     distance_matrix = np.linalg.norm((reference_atom_array.reshape(1,-1,3)-moving_atom_array.reshape(-1,1,3)), axis=2)
+    print([distance_matrix, len(reference), len(moving)])
 
     close = []
     for water_atom_id, distances in zip(moving, distance_matrix):
