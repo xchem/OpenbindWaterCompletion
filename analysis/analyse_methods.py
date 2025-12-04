@@ -65,7 +65,7 @@ def summarize_results(all_results):
                 ligand_recall = sum(water_classes.values()) / len(water_classes)
             else: 
                 ligand_recall = 0.0
-            if len(ligand_results['num_waters']) != 0.0:
+            if ligand_results['num_waters'] != 0.0:
                 ligand_precision = sum(water_classes.values()) / ligand_results['num_waters']
             else:
                 ligand_precision = 0.0
