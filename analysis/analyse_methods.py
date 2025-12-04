@@ -35,7 +35,10 @@ def analyse_result(waters, predicted_waters, threshold=0.5):
             for j, (x_mov, y_mov, z_mov) 
             in predicted_waters.items()
         ]
-        closest_water_distance = min(distances)
+        if len(distances) == 0:
+            closest_water_distance = 10000.0
+        else:
+            closest_water_distance = min(distances)
         closest_distances[(chain, res)] = closest_water_distance
         if closest_water_distance < threshold:
             water_classes[(chain, res)] = 1
