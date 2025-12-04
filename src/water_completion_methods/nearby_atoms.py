@@ -14,7 +14,6 @@ def get_nearby_atoms(reference, moving, threshold=7.0):
             close.append(True)
         else:
             close.append(False)
-    print(close)
     return close
 
 def get_nearby_atoms_from_gemmi(reference, moving, threshold=7.0):

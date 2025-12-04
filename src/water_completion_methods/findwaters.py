@@ -112,7 +112,7 @@ def findwaters_multiple(structure, xmap, chain, res, sigmas=np.linspace(10.0,0.7
             nearby_waters = get_nearby_atoms(waters, new_waters, threshold=0.5)
             for new_water, nearby in zip(new_waters, nearby_waters):
                 if not nearby:
-                    new_waters.append(new_water)
+                    waters.append(new_water)
         else:
             waters += new_waters
     
