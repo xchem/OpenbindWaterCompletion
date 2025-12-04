@@ -38,7 +38,7 @@ def analyse_result(waters, predicted_waters, threshold=0.5):
         closest_water_distance = min(distances)
         closest_distances[(chain, res)] = closest_water_distance
         if closest_water_distance < threshold:
-            water_classes[(chain,res)] = 1
+            water_classes[(chain, res)] = 1
         else:
             water_classes[(chain, res)] = 0
             unmatched_waters.append((chain,res))
@@ -131,7 +131,8 @@ if __name__ == "__main__":
         'findwaters_sigma_3.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=3.0),
         'findwaters_sigma_4.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=4.0),
         'findwaters_sigma_5.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=5.0),
-        'findwaters_multiple': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res,),
+        'findwaters_multiple_minimal': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigma=np.linspace(10.0,0.7,num=11)),
+        'findwaters_multiple_exhaustive': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigma=np.linspace(10.0,0.7,num=93)),
 
         # '': ...,
     }

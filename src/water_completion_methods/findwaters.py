@@ -33,6 +33,17 @@ def get_waters(st, waters_pdb,  chain, res,):
     
     return waters
 
+def map_sigma(xmap, sigma):
+    ccp4 = gemmi.read_ccp4_map(str(xmap))
+    grid = ccp4.grid
+    grid_array = np.array(grid, copy=False)
+    std = np.std(grid_array)
+    non_zero_std = np.std(grid_array[grid_array != 0.0])
+
+    print(f'Stds : with zero vs without: {std} / {non_zero_std}. New Sigma: {round(float(new_sigma), 2)}')
+    new_sigma = sigma * (non_zero_std / std)
+    return new_sigma
+
 def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.0):
     """
     Return the waters in the base structure around the ligand with no changes.
@@ -41,6 +52,9 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
 
     # Clear the waters
     st_desolv = remove_waters(st)
+
+    # Map sigma
+    new_sigma = map_sigma(xmap, sigma)
 
     # Output the transformed file
     desolv_pdb = f'desolv.pdb'
@@ -53,7 +67,7 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
             pdb_in_filename=desolv_pdb, 
             map_file=xmap,
             waters_filename=waters_pdb, 
-            sigma_level=sigma,
+            sigma_level=new_sigma,
             min_dist_to_protein=min_dist, 
             max_dist_to_protein=max_dist
         ),
