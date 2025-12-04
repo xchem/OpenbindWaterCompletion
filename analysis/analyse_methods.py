@@ -61,9 +61,14 @@ def summarize_results(all_results):
         for ligand, ligand_results in method_results.items():
             closest_water_distances = ligand_results['closest_water_distances']
             water_classes = ligand_results['water_classes']
-            ligand_recall = sum(water_classes.values()) / len(water_classes)
-            ligand_precision = sum(water_classes.values()) / ligand_results['num_waters']
-
+            if len(water_classes) != 0.0:
+                ligand_recall = sum(water_classes.values()) / len(water_classes)
+            else: 
+                ligand_recall = 0.0
+            if len(ligand_results['num_waters']) != 0.0:
+                ligand_precision = sum(water_classes.values()) / ligand_results['num_waters']
+            else:
+                ligand_precision = 0.0
             print(f'\t# {ligand[0]} {ligand[1]} {ligand[2]}')
             num_waters = ligand_results["num_waters"]
             print(f'\t\tRecall: {ligand_recall}')
