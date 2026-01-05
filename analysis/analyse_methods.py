@@ -159,6 +159,11 @@ if __name__ == "__main__":
             'ground': 'x5052a.pdb',
             'bound': 'x5052a.pdb',
             'map': 'x5052a_event_crystallographic.ccp4'
+        },
+                ('NXT1', 'x5080a', 'B', '303'): {
+            'ground': 'x5080a.pdb',
+            'bound': 'x5080a.pdb',
+            'map': 'x5080a_event_crystallographic.ccp4'
         }
     }
 
