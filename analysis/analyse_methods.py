@@ -71,9 +71,9 @@ def summarize_results(all_results):
                 ligand_precision = 0.0
             print(f'\t# {ligand[0]} {ligand[1]} {ligand[2]}')
             num_waters = ligand_results["num_waters"]
-            print(f'\t\tRecall: {ligand_recall}')
-            print(f'\t\tPrecision: {ligand_precision}')
-            print(f'\t\tNumber of water predictions: {num_waters}')
+            print(f'\t\tRecall: {round(ligand_recall, 2)}')
+            print(f'\t\tPrecision: {round(ligand_precision, 2)}')
+            print(f'\t\tNumber of water predictions: {round(num_waters, 2)}')
 
     ...
 
@@ -139,7 +139,10 @@ if __name__ == "__main__":
         'findwaters_sigma_3.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=3.0),
         'findwaters_sigma_4.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=4.0),
         'findwaters_sigma_5.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=5.0),
-        'findwaters_multiple_minimal': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=17)),
+        'findwaters_multiple_5_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=17)),
+        'findwaters_multiple_10_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=17)),
+        'findwaters_multiple_17_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=17)),
+
         # 'findwaters_multiple_exhaustive': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=34)),
 
         # '': ...,

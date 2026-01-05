@@ -92,6 +92,27 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
 
     ...
 
+def write_waters(waters, tempalte_path, out_path):
+    st = gemmi.read_structure(str(tempalte_path))
+    desolv = remove_waters(st)
+
+    water_chain = gemmi.Chain('W')
+
+    for water in waters:
+        res = gemmi.Residue('HOH')
+        atom = gemmi.Atom()
+        atom.name = 'O'
+        atom.element = gemmi.Element('O')
+        atom.pos = gemmi.Position(
+            water[0],
+            water[1],
+            water[2],
+        )
+        res.add_atom(water)
+
+    desolv[0].add_chain(water_chain)
+    desolv.write_minimal_pdb(str(out_path))
+
 
 def findwaters_multiple(structure, xmap, chain, res, sigmas=np.linspace(10.0,0.7,num=93), min_dist=1.4, max_dist=7.0):
     waters = []
@@ -115,5 +136,8 @@ def findwaters_multiple(structure, xmap, chain, res, sigmas=np.linspace(10.0,0.7
                     waters.append(new_water)
         else:
             waters += new_waters
+
+    # Write water structure
+    write_waters(waters, structure, f'findwaters_multiple_{len(sigmas)}.pdb')
     
     return waters
