@@ -101,7 +101,7 @@ def write_waters(waters, tempalte_path, out_path):
     for j, water in enumerate(waters):
         res = gemmi.Residue()
         res.name = 'HOH'
-        res.seqid = gemmi.SeqId(j)
+        res.seqid = gemmi.SeqId(f"j")
         atom = gemmi.Atom()
         atom.name = 'O'
         atom.element = gemmi.Element('O')
