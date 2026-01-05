@@ -99,7 +99,8 @@ def write_waters(waters, tempalte_path, out_path):
     water_chain = gemmi.Chain('W')
 
     for water in waters:
-        res = gemmi.Residue('HOH')
+        res = gemmi.Residue()
+        res.name = 'HOH'
         atom = gemmi.Atom()
         atom.name = 'O'
         atom.element = gemmi.Element('O')
