@@ -98,9 +98,10 @@ def write_waters(waters, tempalte_path, out_path):
 
     water_chain = gemmi.Chain('W')
 
-    for water in waters:
+    for j, water in enumerate(waters):
         res = gemmi.Residue()
         res.name = 'HOH'
+        res.seqid = gemmi.SeqId(j)
         atom = gemmi.Atom()
         atom.name = 'O'
         atom.element = gemmi.Element('O')
@@ -112,7 +113,7 @@ def write_waters(waters, tempalte_path, out_path):
         res.add_atom(atom)
         water_chain.add_residue(res)
 
-    desolv[0].add_chain(water_chain)
+    desolv[0].add_chain(water_chain, unique_name=True)
     desolv.write_minimal_pdb(str(out_path))
 
 
