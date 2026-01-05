@@ -109,7 +109,7 @@ def write_waters(waters, tempalte_path, out_path):
             water[1],
             water[2],
         )
-        res.add_atom(water)
+        res.add_atom(atom)
 
     desolv[0].add_chain(water_chain)
     desolv.write_minimal_pdb(str(out_path))
