@@ -154,6 +154,11 @@ if __name__ == "__main__":
             'ground': 'CHIKV_MacB-x0270-pandda-input.pdb',
             'bound': 'refine.split.bound-state.pdb',
             'map': 'CHIKV_MacB-x0270-event_1_1-BDC_0.14_map.native.ccp4'
+        },
+        ('x5052a', 'B', '303'): {
+            'ground': 'x5052a.pdb',
+            'bound': 'x5052a.pdb',
+            'map': 'x5052a_event_crystallographic.ccp4'
         }
     }
 
