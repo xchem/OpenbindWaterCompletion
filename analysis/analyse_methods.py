@@ -139,9 +139,10 @@ if __name__ == "__main__":
         'findwaters_sigma_3.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=3.0),
         'findwaters_sigma_4.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=4.0),
         'findwaters_sigma_5.0': lambda st, xmap, chain, res: findwaters(st, xmap, chain, res, sigma=5.0),
-        'findwaters_multiple_3_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=17)),
-        'findwaters_multiple_5_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=17)),
-        'findwaters_multiple_10_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=17)),
+        'findwaters_multiple_2_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=2)),
+        'findwaters_multiple_3_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=3)),
+        'findwaters_multiple_5_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=5)),
+        'findwaters_multiple_10_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=10)),
         # 'findwaters_multiple_17_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=17)),
 
         # 'findwaters_multiple_exhaustive': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=34)),
