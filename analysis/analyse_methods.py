@@ -9,12 +9,12 @@ from water_completion_methods.nearby_atoms import get_ligand_waters
 
 def get_water_data(data_path, data):
     water_data = {}
-    for (dtag, chain, res), paths in data.items():
-        st = gemmi.read_structure(str(data_path / dtag / paths['bound']))
-        water_data[(dtag, chain, res)] = (
-            data_path / dtag / paths['ground'], 
+    for (system, dtag, chain, res), paths in data.items():
+        st = gemmi.read_structure(str(data_path / system / dtag / paths['bound']))
+        water_data[(system, dtag, chain, res)] = (
+            data_path / system / dtag / paths['ground'], 
                         data_path / dtag / paths['bound'], 
-            data_path / dtag / paths['map'], 
+            data_path / system / dtag / paths['map'], 
             get_ligand_waters(chain, res, st),
             )
     
@@ -69,7 +69,7 @@ def summarize_results(all_results):
                 ligand_precision = sum(water_classes.values()) / ligand_results['num_waters']
             else:
                 ligand_precision = 0.0
-            print(f'\t# {ligand[0]} {ligand[1]} {ligand[2]}')
+            print(f'\t# {ligand[0]} {ligand[1]} {ligand[2]} {ligand[3]}')
             num_waters = ligand_results["num_waters"]
             print(f'\t\tRecall: {round(ligand_recall, 2)}')
             print(f'\t\tPrecision: {round(ligand_precision, 2)}')
@@ -116,7 +116,7 @@ def analyse_methods(methods, data):
     all_results = {}
     for method_name, method in methods.items():
         all_results[method_name] = {}
-        for (dtag, chain, res), (structure, bound_structure, xmap, waters) in data.items():
+        for (system, dtag, chain, res), (structure, bound_structure, xmap, waters) in data.items():
             predicted_waters = method(bound_structure, xmap, chain, res)
             predicted_ligand_waters = get_predicted_ligand_waters(
                 bound_structure, 
@@ -125,7 +125,7 @@ def analyse_methods(methods, data):
                 res,
                 )
             result_analysis = analyse_result(waters, predicted_ligand_waters,)
-            all_results[method_name][(dtag, chain, res)] = result_analysis
+            all_results[method_name][(system, dtag, chain, res)] = result_analysis
 
     # Summarize the results
     summarize_results(all_results)
@@ -150,12 +150,12 @@ if __name__ == "__main__":
         # '': ...,
     }
     data = {
-        ('CHIKV_MacB-x0270', 'A', '304'): {
+        ('CHIKV', 'CHIKV_MacB-x0270', 'A', '304'): {
             'ground': 'CHIKV_MacB-x0270-pandda-input.pdb',
             'bound': 'refine.split.bound-state.pdb',
             'map': 'CHIKV_MacB-x0270-event_1_1-BDC_0.14_map.native.ccp4'
         },
-        ('x5052a', 'B', '303'): {
+        ('NXT1', 'x5052a', 'B', '303'): {
             'ground': 'x5052a.pdb',
             'bound': 'x5052a.pdb',
             'map': 'x5052a_event_crystallographic.ccp4'
