@@ -15,7 +15,7 @@ def remove_waters(st):
 
     return new_st
     
-def get_waters(st, waters_pdb,  chain, res,):
+def get_waters(st, waters_pdb,  chain, res, ):
     water_st = gemmi.read_structure(str(waters_pdb))
 
     # water_st[0].add_chain(st[0][chain])

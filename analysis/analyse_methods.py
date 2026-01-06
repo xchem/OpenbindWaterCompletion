@@ -9,7 +9,7 @@ from water_completion_methods.base_structure_waters import base_structure_waters
 from water_completion_methods.findwaters import findwaters, findwaters_multiple
 from water_completion_methods.nearby_atoms import get_ligand_waters
 
-def get_water_data(data_path, data):
+def get_water_data(data_path, data, threshold=3.0):
     water_data = {}
     for (system, dtag, chain, res), paths in data.items():
         st = gemmi.read_structure(str(data_path / system / dtag / paths['bound']))
@@ -17,7 +17,7 @@ def get_water_data(data_path, data):
             data_path / system / dtag / paths['ground'], 
                         data_path / system / dtag / paths['bound'], 
             data_path / system / dtag / paths['map'], 
-            get_ligand_waters(chain, res, st),
+            get_ligand_waters(chain, res, st, threshold=3.0),
             )
     
     return water_data
@@ -128,7 +128,7 @@ def get_predicted_ligand_waters(
 
     return ligand_waters
 
-def process_dataset(method, bound_structure, xmap, out_dir, chain, res, waters):
+def process_dataset(method, bound_structure, xmap, out_dir, chain, res, waters, threshold):
     predicted_waters = method(bound_structure, xmap, out_dir, chain, res, )
 
         
@@ -142,7 +142,7 @@ def process_dataset(method, bound_structure, xmap, out_dir, chain, res, waters):
     result_analysis = analyse_result(waters, predicted_ligand_waters,)
     return result_analysis
 
-def analyse_methods(methods, data, data_path):
+def analyse_methods(methods, data, data_path, threshold=3.0):
 
     # Get the results for each method
     all_results = {}
@@ -153,7 +153,7 @@ def analyse_methods(methods, data, data_path):
         for (system, dtag, chain, res), (structure, bound_structure, xmap, waters) in data.items():
             out_dir = data_path / system / dtag 
             predicted_waters_futures[(system, dtag, chain, res)] = delayed(process_dataset)(
-                method, bound_structure, xmap, out_dir, chain, res, waters)
+                method, bound_structure, xmap, out_dir, chain, res, waters, threshold)
 
         results = Parallel(n_jobs=-1)(f for f in predicted_waters_futures.values())
         for result_id, result in zip(data, results):
@@ -248,6 +248,8 @@ if __name__ == "__main__":
 
     data_path = pathlib.Path('./data')
 
-    water_data = get_water_data(data_path, data)
+    threshold = 3.0
 
-    analyse_methods(methods, water_data, data_path)
+    water_data = get_water_data(data_path, data, threshold=threshold)
+
+    analyse_methods(methods, water_data, data_path, threshold)
