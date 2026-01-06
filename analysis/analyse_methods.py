@@ -185,10 +185,10 @@ if __name__ == "__main__":
             'bound': 'A0152b.pdb',
             'map': 'A0152b_event_crystallographic.ccp4'
         },
-        ('A71EV2A', 'A0192a', 'A', '147'): {
-            'ground': 'A0192a.pdb',
-            'bound': 'A0192a.pdb',
-            'map': 'A0192a_event_crystallographic.ccp4'
+        ('A71EV2A', 'A0194a', 'A', '147'): {
+            'ground': 'A0194a.pdb',
+            'bound': 'A0194a.pdb',
+            'map': 'A0194a_event_crystallographic.ccp4'
         },
         ('A71EV2A', 'A0202a', 'A', '147'): {
             'ground': 'A0202a.pdb',
