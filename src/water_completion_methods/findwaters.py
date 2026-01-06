@@ -71,22 +71,23 @@ def findwaters(
 
     # Run findwaters
     waters_pdb = out_dir / f'waters_{round(float(sigma), 2)}.pdb'
-    p = subprocess.Popen(
-        SCRIPT.format(
-            pdb_in_filename=desolv_pdb, 
-            map_file=xmap,
-            waters_filename=waters_pdb, 
-            sigma_level=new_sigma,
-            min_dist_to_protein=min_dist, 
-            max_dist_to_protein=max_dist
-        ),
-        shell=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        )
-    stdout, stderr = p.communicate()
-    print(f'STDOUT: {stdout}')
-    print(f'STDERR: {stderr}')
+    if not waters_pdb.exists():
+        p = subprocess.Popen(
+            SCRIPT.format(
+                pdb_in_filename=desolv_pdb, 
+                map_file=xmap,
+                waters_filename=waters_pdb, 
+                sigma_level=new_sigma,
+                min_dist_to_protein=min_dist, 
+                max_dist_to_protein=max_dist
+            ),
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            )
+        stdout, stderr = p.communicate()
+        print(f'STDOUT: {stdout}')
+        print(f'STDERR: {stderr}')
 
     # Get ligand waters from output file
     waters = get_waters(st, waters_pdb, chain, res,)
