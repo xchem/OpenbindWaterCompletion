@@ -17,7 +17,7 @@ def get_water_data(data_path, data, threshold=3.0):
             data_path / system / dtag / paths['ground'], 
                         data_path / system / dtag / paths['bound'], 
             data_path / system / dtag / paths['map'], 
-            get_ligand_waters(chain, res, st, threshold=3.0),
+            get_ligand_waters(chain, res, st, threshold=threshold),
             )
     
     return water_data
