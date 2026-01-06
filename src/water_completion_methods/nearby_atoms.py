@@ -1,7 +1,7 @@
 import gemmi
 import numpy as np
 
-def get_nearby_atoms(reference, moving, threshold=7.0):
+def get_nearby_atoms(reference, moving, threshold=5.0):
     reference_atom_array = np.array(reference)
     moving_atom_array = np.array(moving)
 
@@ -16,13 +16,13 @@ def get_nearby_atoms(reference, moving, threshold=7.0):
             close.append(False)
     return close
 
-def get_nearby_atoms_from_gemmi(reference, moving, threshold=7.0):
+def get_nearby_atoms_from_gemmi(reference, moving, threshold=5.0):
     reference_poss = [(pos.x,pos.y,pos.z) for pos in reference]
     moving_poss = [(pos.x,pos.y,pos.z) for pos in moving]
     return get_nearby_atoms(reference_poss, moving_poss, threshold)
 
 
-def get_ligand_waters(chain, res, st, threshold=7.0):
+def get_ligand_waters(chain, res, st, threshold=5.0):
     """
     Get waters near the ligand
     """
