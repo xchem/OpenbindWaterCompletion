@@ -112,7 +112,7 @@ def get_predicted_ligand_waters(
     return ligand_waters
 
 def process_dataset(method, bound_structure, xmap, out_dir, chain, res, waters):
-    predicted_waters = method(bound_structure, xmap, chain, res, out_dir)
+    predicted_waters = method(bound_structure, xmap, out_dir, chain, res, )
 
         
 
