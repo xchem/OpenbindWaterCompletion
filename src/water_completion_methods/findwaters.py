@@ -67,7 +67,7 @@ def findwaters(
 
     # Output the transformed file
     desolv_pdb = out_dir / f'desolv.pdb'
-    st_desolv.write_minimal_pdb(desolv_pdb)
+    st_desolv.write_minimal_pdb(str(desolv_pdb))
 
     # Run findwaters
     waters_pdb = out_dir / f'waters_{round(float(sigma), 2)}.pdb'
