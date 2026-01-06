@@ -248,7 +248,7 @@ if __name__ == "__main__":
 
     data_path = pathlib.Path('./data')
 
-    threshold = 3.0
+    threshold = 5.0
 
     water_data = get_water_data(data_path, data, threshold=threshold)
 
