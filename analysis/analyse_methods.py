@@ -136,7 +136,7 @@ def analyse_methods(methods, data):
             predicted_waters_futures[(system, dtag, chain, res)] = delayed(process_dataset)(
                 method, bound_structure, xmap, chain, res, waters)
 
-        results = Parallel(n_jobs=1)(f for f in predicted_waters_futures.values())
+        results = Parallel(n_jobs=-1)(f for f in predicted_waters_futures.values())
         for result_id, result in zip(data, results):
             all_results[method_name][result_id] = result
 
