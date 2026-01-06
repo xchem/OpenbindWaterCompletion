@@ -100,7 +100,7 @@ def get_predicted_ligand_waters(
                 predicted_ligand_waters,
                 chain,
                 res,
-                threshold=7.0,
+                threshold=5.0,
                 ):
     st = gemmi.read_structure(str(bound_state_path))
 
