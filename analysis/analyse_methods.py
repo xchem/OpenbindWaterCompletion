@@ -80,8 +80,8 @@ def summarize_results(all_results, out_file):
             results.append(
                 {
                     'Method': method,
-                    'System': ligand_results[0],
-                    'Dtag': ligand_results[1],
+                    'System': ligand[0],
+                    'Dtag': ligand[1],
                     'Recall': ligand_recall,
                     'Precission': ligand_precision,
                     'Number of Reference Waters': len(water_classes),
