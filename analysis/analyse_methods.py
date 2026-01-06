@@ -133,7 +133,7 @@ def analyse_methods(methods, data, data_path):
         all_results[method_name] = {}
         predicted_waters_futures = {}
         for (system, dtag, chain, res), (structure, bound_structure, xmap, waters) in data.items():
-            out_dir = data_path / system / dtag / chain / res
+            out_dir = data_path / system / dtag 
             predicted_waters_futures[(system, dtag, chain, res)] = delayed(process_dataset)(
                 method, bound_structure, xmap, out_dir, chain, res, waters)
 
