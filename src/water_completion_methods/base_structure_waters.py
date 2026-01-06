@@ -1,6 +1,6 @@
 import gemmi 
 
-def base_structure_waters(structure, xmap, chain, res):
+def base_structure_waters(structure, xmap, chain, res, out_dir):
     """
     Return the waters in the base structure around the ligand with no changes.
     """
