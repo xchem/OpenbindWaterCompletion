@@ -2,6 +2,7 @@ import pathlib
 
 import numpy as np
 import gemmi
+from joblib import Parallel, delayed
 
 from water_completion_methods.base_structure_waters import base_structure_waters
 from water_completion_methods.findwaters import findwaters, findwaters_multiple
@@ -110,22 +111,36 @@ def get_predicted_ligand_waters(
 
     return ligand_waters
 
+def process_dataset(method, bound_structure, xmap, chain, res, waters):
+    predicted_waters = method(bound_structure, xmap, chain, res)
+
+        
+
+    predicted_ligand_waters = get_predicted_ligand_waters(
+                bound_structure, 
+                predicted_waters,
+                chain,
+                res,
+                )
+    result_analysis = analyse_result(waters, predicted_ligand_waters,)
+    return result_analysis
+
 def analyse_methods(methods, data):
 
     # Get the results for each method
     all_results = {}
     for method_name, method in methods.items():
         all_results[method_name] = {}
+        predicted_waters_futures = {}
         for (system, dtag, chain, res), (structure, bound_structure, xmap, waters) in data.items():
-            predicted_waters = method(bound_structure, xmap, chain, res)
-            predicted_ligand_waters = get_predicted_ligand_waters(
-                bound_structure, 
-                predicted_waters,
-                chain,
-                res,
-                )
-            result_analysis = analyse_result(waters, predicted_ligand_waters,)
-            all_results[method_name][(system, dtag, chain, res)] = result_analysis
+            predicted_waters_futures[(system, dtag, chain, res)] = delayed(process_dataset)(
+                method, bound_structure, xmap, chain, res, waters)
+
+        results = Parallel(n_jobs=1)(f for f in predicted_waters_futures.values())
+        for result_id, result in zip(data, results):
+            all_results[method_name][result_id] = result
+
+
 
     # Summarize the results
     summarize_results(all_results)
@@ -142,7 +157,7 @@ if __name__ == "__main__":
         'findwaters_multiple_2_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=2)),
         'findwaters_multiple_3_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=3)),
         'findwaters_multiple_5_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=5)),
-        'findwaters_multiple_10_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=10)),
+        # 'findwaters_multiple_10_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=10)),
         # 'findwaters_multiple_17_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=17)),
 
         # 'findwaters_multiple_exhaustive': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=34)),
