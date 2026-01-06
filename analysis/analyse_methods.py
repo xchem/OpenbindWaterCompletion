@@ -3,6 +3,7 @@ import pathlib
 import numpy as np
 import gemmi
 from joblib import Parallel, delayed
+import pandas as pd
 
 from water_completion_methods.base_structure_waters import base_structure_waters
 from water_completion_methods.findwaters import findwaters, findwaters_multiple
@@ -56,7 +57,8 @@ def analyse_result(waters, predicted_waters, threshold=0.5):
         'num_waters': len(predicted_waters)
     }
 
-def summarize_results(all_results):
+def summarize_results(all_results, out_file):
+    results = []
     for method, method_results in all_results.items():
         print(f'# Method: {method}')
         for ligand, ligand_results in method_results.items():
@@ -75,7 +77,22 @@ def summarize_results(all_results):
             print(f'\t\tRecall: {round(ligand_recall, 2)}')
             print(f'\t\tPrecision: {round(ligand_precision, 2)}')
             print(f'\t\tNumber of water predictions: {round(num_waters, 2)}')
+            results.append(
+                {
+                    'Method': method,
+                    'System': ligand_results[0],
+                    'Dtag': ligand_results[1],
+                    'Recall': ligand_recall,
+                    'Precission': ligand_precision,
+                    'Number of Reference Waters': len(water_classes),
+                    'Number of Water Predictions': ligand_results["num_waters"],
+                }
+            )
 
+    # Write CSV
+    result_df = pd.DataFrame(results).round(2)
+    result_df.to_csv(out_file)
+    print(result_df)
     ...
 
 def get_predicted_ligand_waters(
@@ -145,7 +162,7 @@ def analyse_methods(methods, data, data_path):
 
 
     # Summarize the results
-    summarize_results(all_results)
+    summarize_results(all_results, f'results.csv')
 
 if __name__ == "__main__":
     ...
