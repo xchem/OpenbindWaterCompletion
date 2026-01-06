@@ -125,7 +125,7 @@ def process_dataset(method, bound_structure, xmap, chain, res, waters):
     result_analysis = analyse_result(waters, predicted_ligand_waters,)
     return result_analysis
 
-def analyse_methods(methods, data):
+def analyse_methods(methods, data, data_path):
 
     # Get the results for each method
     all_results = {}
@@ -133,8 +133,9 @@ def analyse_methods(methods, data):
         all_results[method_name] = {}
         predicted_waters_futures = {}
         for (system, dtag, chain, res), (structure, bound_structure, xmap, waters) in data.items():
+            out_dir = data_path / system / dtag / chain / res
             predicted_waters_futures[(system, dtag, chain, res)] = delayed(process_dataset)(
-                method, bound_structure, xmap, chain, res, waters)
+                method, bound_structure, xmap, out_dir, chain, res, waters)
 
         results = Parallel(n_jobs=-1)(f for f in predicted_waters_futures.values())
         for result_id, result in zip(data, results):
@@ -201,4 +202,4 @@ if __name__ == "__main__":
 
     water_data = get_water_data(data_path, data)
 
-    analyse_methods(methods, water_data)
+    analyse_methods(methods, water_data, data_path)

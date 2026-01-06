@@ -44,7 +44,16 @@ def map_sigma(xmap, sigma):
     print(f'Stds : with zero vs without: {std} / {non_zero_std}. New Sigma: {round(float(new_sigma), 2)}')
     return new_sigma
 
-def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.0):
+def findwaters(
+        structure, 
+        xmap, 
+        out_dir,
+        chain, 
+        res, 
+        sigma=2.0, 
+        min_dist=1.4, 
+        max_dist=7.0,
+        ):
     """
     Return the waters in the base structure around the ligand with no changes.
     """
@@ -57,11 +66,11 @@ def findwaters(structure, xmap, chain, res, sigma=2.0, min_dist=1.4, max_dist=7.
     new_sigma = map_sigma(xmap, sigma)
 
     # Output the transformed file
-    desolv_pdb = f'desolv.pdb'
+    desolv_pdb = out_dir / f'desolv.pdb'
     st_desolv.write_minimal_pdb(desolv_pdb)
 
     # Run findwaters
-    waters_pdb = f'waters_{round(float(sigma), 2)}.pdb'
+    waters_pdb = out_dir / f'waters_{round(float(sigma), 2)}.pdb'
     p = subprocess.Popen(
         SCRIPT.format(
             pdb_in_filename=desolv_pdb, 
@@ -117,12 +126,22 @@ def write_waters(waters, tempalte_path, out_path):
     desolv.write_minimal_pdb(str(out_path))
 
 
-def findwaters_multiple(structure, xmap, chain, res, sigmas=np.linspace(10.0,0.7,num=93), min_dist=1.4, max_dist=7.0):
+def findwaters_multiple(
+        structure, 
+        xmap, 
+        out_dir,
+        chain, 
+        res, 
+        sigmas=np.linspace(10.0,0.7,num=93), 
+        min_dist=1.4, 
+        max_dist=7.0,
+        ):
     waters = []
     for sigma in sigmas:
         new_waters = findwaters(
             structure,
             xmap,
+            out_dir,
             chain, 
             res, 
             sigma=sigma, 
@@ -141,6 +160,6 @@ def findwaters_multiple(structure, xmap, chain, res, sigmas=np.linspace(10.0,0.7
             waters += new_waters
 
     # Write water structure
-    write_waters(waters, structure, f'findwaters_multiple_{len(sigmas)}.pdb')
+    write_waters(waters, structure, out_dir / f'findwaters_multiple_{len(sigmas)}.pdb')
     
     return waters
