@@ -175,11 +175,26 @@ if __name__ == "__main__":
             'bound': 'x5052a.pdb',
             'map': 'x5052a_event_crystallographic.ccp4'
         },
-                ('NXT1', 'x5080a', 'B', '303'): {
+        ('NXT1', 'x5080a', 'B', '303'): {
             'ground': 'x5080a.pdb',
             'bound': 'x5080a.pdb',
             'map': 'x5080a_event_crystallographic.ccp4'
-        }
+        },
+        ('A71EV2A', 'A0152b', 'A', '201'): {
+            'ground': 'A0152b.pdb',
+            'bound': 'A0152b.pdb',
+            'map': 'A0152b_event_crystallographic.ccp4'
+        },
+        ('A71EV2A', 'A0192a', 'A', '147'): {
+            'ground': 'A0192a.pdb',
+            'bound': 'A0192a.pdb',
+            'map': 'A0192a_event_crystallographic.ccp4'
+        },
+        ('A71EV2A', 'A0202a', 'A', '147'): {
+            'ground': 'A0202a.pdb',
+            'bound': 'A0202a.pdb',
+            'map': 'A0202a_event_crystallographic.ccp4'
+        },
     }
 
     data_path = pathlib.Path('./data')
