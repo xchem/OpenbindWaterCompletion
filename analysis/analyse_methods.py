@@ -130,6 +130,7 @@ def analyse_methods(methods, data, data_path):
     # Get the results for each method
     all_results = {}
     for method_name, method in methods.items():
+        print(f'Processing method: {method_name}...')
         all_results[method_name] = {}
         predicted_waters_futures = {}
         for (system, dtag, chain, res), (structure, bound_structure, xmap, waters) in data.items():
