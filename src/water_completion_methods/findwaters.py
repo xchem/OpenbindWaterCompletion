@@ -36,6 +36,7 @@ def get_waters(st, waters_pdb,  chain, res, ):
 
 def map_sigma(xmap, sigma):
     ccp4 = gemmi.read_ccp4_map(str(xmap))
+    ccp4.setup(0.0)
     grid = ccp4.grid
     grid_array = np.array(grid, copy=False)
     std = np.std(grid_array)
