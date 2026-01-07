@@ -12,6 +12,7 @@ SCRIPT = "module load ccp4; findwaters --pdbin {pdb_in_filename} --mapin {map_fi
 def remove_waters(st):
     new_st = st.clone()
     new_st.remove_waters()
+    new_st.spacegroup_hm = 'P1'
 
     return new_st
     
