@@ -39,7 +39,7 @@ def map_sigma(xmap, sigma):
     grid = ccp4.grid
     grid_array = np.array(grid, copy=False)
     std = np.std(grid_array)
-    non_zero_std = np.std(grid_array[grid_array != 0.0])
+    non_zero_std = np.std(grid_array[(grid_array < 0.05) & (grid_array > -0.05) ])
     new_sigma = sigma * (non_zero_std / std)
 
     print(f'Stds : with zero vs without: {std} / {non_zero_std}. New Sigma: {round(float(new_sigma), 2)}. {np.sum(grid_array == 0.0)} / {grid_array.size} zeros')
