@@ -179,6 +179,7 @@ if __name__ == "__main__":
         'findwaters_multiple_7_steps': lambda st, xmap, chain, res, out_dir: findwaters_multiple(st, xmap, chain, res, out_dir, sigmas=np.linspace(5.0,0.5,num=7)),
         'findwaters_multiple_9_steps': lambda st, xmap, chain, res, out_dir: findwaters_multiple(st, xmap, chain, res, out_dir, sigmas=np.linspace(5.0,0.5,num=9)),
         'findwaters_multiple_11_steps': lambda st, xmap, chain, res, out_dir: findwaters_multiple(st, xmap, chain, res, out_dir, sigmas=np.linspace(5.0,0.5,num=11)),
+        'findwaters_multiple_21_steps': lambda st, xmap, chain, res, out_dir: findwaters_multiple(st, xmap, chain, res, out_dir, sigmas=np.linspace(5.0,0.5,num=21)),
 
         # 'findwaters_multiple_10_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=10)),
         # 'findwaters_multiple_17_steps': lambda st, xmap, chain, res: findwaters_multiple(st, xmap, chain, res, sigmas=np.linspace(4.0,0.5,num=17)),
