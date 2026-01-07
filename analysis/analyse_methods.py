@@ -264,11 +264,7 @@ if __name__ == "__main__":
             'map': 'c0300a_event_crystallographic.ccp4'
         },
 
-        ('CHIKV', 'c0312a', 'A', '304'): {
-            'ground': 'c0312a.pdb',
-            'bound': 'c0312a.pdb',
-            'map': 'c0312a_event_crystallographic.ccp4'
-        },
+
 
     }
 
