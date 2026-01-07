@@ -189,76 +189,76 @@ if __name__ == "__main__":
         # '': ...,
     }
     data = {
-        # ('CHIKV', 'CHIKV_MacB-x0270', 'A', '304'): {
-        #     'ground': 'CHIKV_MacB-x0270-pandda-input.pdb',
-        #     'bound': 'refine.split.bound-state.pdb',
-        #     'map': 'CHIKV_MacB-x0270-event_1_1-BDC_0.14_map.native.ccp4'
-        # },
-        # ('NXT1', 'x5052a', 'B', '303'): {
-        #     'ground': 'x5052a.pdb',
-        #     'bound': 'x5052a.pdb',
-        #     'map': 'x5052a_event_crystallographic.ccp4'
-        # },
-        # ('NXT1', 'x5080a', 'B', '303'): {
-        #     'ground': 'x5080a.pdb',
-        #     'bound': 'x5080a.pdb',
-        #     'map': 'x5080a_event_crystallographic.ccp4'
-        # },
-        # ('A71EV2A', 'A0152b', 'A', '201'): {
-        #     'ground': 'A0152b.pdb',
-        #     'bound': 'A0152b.pdb',
-        #     'map': 'A0152b_event_crystallographic.ccp4'
-        # },
-        # ('A71EV2A', 'A0194a', 'A', '147'): {
-        #     'ground': 'A0194a.pdb',
-        #     'bound': 'A0194a.pdb',
-        #     'map': 'A0194a_event_crystallographic.ccp4'
-        # },
-        # ('A71EV2A', 'A0202a', 'A', '147'): {
-        #     'ground': 'A0202a.pdb',
-        #     'bound': 'A0202a.pdb',
-        #     'map': 'A0202a_event_crystallographic.ccp4'
-        # },        
-        # ('A71EV2A', 'A0207a', 'A', '151'): {
-        #     'ground': 'A0207a.pdb',
-        #     'bound': 'A0207a.pdb',
-        #     'map': 'A0207a_event_crystallographic.ccp4'
-        # },
-        # ('A71EV2A', 'A0228a', 'A', '147'): {
-        #     'ground': 'A0228a.pdb',
-        #     'bound': 'A0228a.pdb',
-        #     'map': 'A0228a_event_crystallographic.ccp4'
-        # },
-        # ('A71EV2A', 'A0237a', 'A', '151'): {
-        #     'ground': 'A0237a.pdb',
-        #     'bound': 'A0237a.pdb',
-        #     'map': 'A0237a_event_crystallographic.ccp4'
-        # },
-        # ('A71EV2A', 'A0310a', 'A', '147'): {
-        #     'ground': 'A0310a.pdb',
-        #     'bound': 'A0310a.pdb',
-        #     'map': 'A0310a_event_crystallographic.ccp4'
-        # },
-        # ('A71EV2A', 'A0526a', 'A', '147'): {
-        #     'ground': 'A0526a.pdb',
-        #     'bound': 'A0526a.pdb',
-        #     'map': 'A0526a_event_crystallographic.ccp4'
-        # },
-        # ('CHIKV', 'c0281a', 'C', '304'): {
-        #     'ground': 'c0281a.pdb',
-        #     'bound': 'c0281a.pdb',
-        #     'map': 'c0281a_event_crystallographic.ccp4'
-        # },
-        # ('CHIKV', 'c0289a', 'C', '401'): {
-        #     'ground': 'c0289a.pdb',
-        #     'bound': 'c0289a.pdb',
-        #     'map': 'c0289a_event_crystallographic.ccp4'
-        # },
-        # ('CHIKV', 'c0294a', 'A', '401'): {
-        #     'ground': 'c0294a.pdb',
-        #     'bound': 'c0294a.pdb',
-        #     'map': 'c0294a_event_crystallographic.ccp4'
-        # },
+        ('CHIKV', 'CHIKV_MacB-x0270', 'A', '304'): {
+            'ground': 'CHIKV_MacB-x0270-pandda-input.pdb',
+            'bound': 'refine.split.bound-state.pdb',
+            'map': 'CHIKV_MacB-x0270-event_1_1-BDC_0.14_map.native.ccp4'
+        },
+        ('NXT1', 'x5052a', 'B', '303'): {
+            'ground': 'x5052a.pdb',
+            'bound': 'x5052a.pdb',
+            'map': 'x5052a_event_crystallographic.ccp4'
+        },
+        ('NXT1', 'x5080a', 'B', '303'): {
+            'ground': 'x5080a.pdb',
+            'bound': 'x5080a.pdb',
+            'map': 'x5080a_event_crystallographic.ccp4'
+        },
+        ('A71EV2A', 'A0152b', 'A', '201'): {
+            'ground': 'A0152b.pdb',
+            'bound': 'A0152b.pdb',
+            'map': 'A0152b_event_crystallographic.ccp4'
+        },
+        ('A71EV2A', 'A0194a', 'A', '147'): {
+            'ground': 'A0194a.pdb',
+            'bound': 'A0194a.pdb',
+            'map': 'A0194a_event_crystallographic.ccp4'
+        },
+        ('A71EV2A', 'A0202a', 'A', '147'): {
+            'ground': 'A0202a.pdb',
+            'bound': 'A0202a.pdb',
+            'map': 'A0202a_event_crystallographic.ccp4'
+        },        
+        ('A71EV2A', 'A0207a', 'A', '151'): {
+            'ground': 'A0207a.pdb',
+            'bound': 'A0207a.pdb',
+            'map': 'A0207a_event_crystallographic.ccp4'
+        },
+        ('A71EV2A', 'A0228a', 'A', '147'): {
+            'ground': 'A0228a.pdb',
+            'bound': 'A0228a.pdb',
+            'map': 'A0228a_event_crystallographic.ccp4'
+        },
+        ('A71EV2A', 'A0237a', 'A', '151'): {
+            'ground': 'A0237a.pdb',
+            'bound': 'A0237a.pdb',
+            'map': 'A0237a_event_crystallographic.ccp4'
+        },
+        ('A71EV2A', 'A0310a', 'A', '147'): {
+            'ground': 'A0310a.pdb',
+            'bound': 'A0310a.pdb',
+            'map': 'A0310a_event_crystallographic.ccp4'
+        },
+        ('A71EV2A', 'A0526a', 'A', '147'): {
+            'ground': 'A0526a.pdb',
+            'bound': 'A0526a.pdb',
+            'map': 'A0526a_event_crystallographic.ccp4'
+        },
+        ('CHIKV', 'c0281a', 'C', '304'): {
+            'ground': 'c0281a.pdb',
+            'bound': 'c0281a.pdb',
+            'map': 'c0281a_event_crystallographic.ccp4'
+        },
+        ('CHIKV', 'c0289a', 'C', '401'): {
+            'ground': 'c0289a.pdb',
+            'bound': 'c0289a.pdb',
+            'map': 'c0289a_event_crystallographic.ccp4'
+        },
+        ('CHIKV', 'c0294a', 'A', '401'): {
+            'ground': 'c0294a.pdb',
+            'bound': 'c0294a.pdb',
+            'map': 'c0294a_event_crystallographic.ccp4'
+        },
         ('CHIKV', 'c0300a', 'A', '401'): {
             'ground': 'c0300a_updated.pdb',
             'bound': 'c0300a_updated.pdb',
