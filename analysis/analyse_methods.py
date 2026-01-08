@@ -77,6 +77,8 @@ def summarize_results(all_results, out_file):
             print(f'\t\tRecall: {round(ligand_recall, 2)}')
             print(f'\t\tPrecision: {round(ligand_precision, 2)}')
             print(f'\t\tNumber of water predictions: {round(num_waters, 2)}')
+            missing_waters = [water_id for water_id, water_class in water_classes.items() if water_class == 0]
+            print(f'\t\Missing Waters: {missing_waters}')
             results.append(
                 {
                     'Method': method,
@@ -86,6 +88,7 @@ def summarize_results(all_results, out_file):
                     'Precission': ligand_precision,
                     'Number of Reference Waters': len(water_classes),
                     'Number of Water Predictions': ligand_results["num_waters"],
+                    'Missing Waters': ','.join(missing_waters),
                 }
             )
 
