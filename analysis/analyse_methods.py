@@ -22,7 +22,7 @@ def get_water_data(data_path, data, threshold=3.0):
     
     return water_data
 
-def analyse_result(waters, predicted_waters, threshold=0.5):
+def analyse_result(waters, predicted_waters, threshold=0.6):
     """
     Iterate over known waters, getting the distance to the closest predicted water
     Classify as positive/negative on whether they are within 0.5A
