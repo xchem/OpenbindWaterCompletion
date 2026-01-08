@@ -304,27 +304,27 @@ if __name__ == "__main__":
             'bound': 'c1278a_updated.pdb',
             'map': 'c1278a_event_crystallographic.ccp4'
         },
-        ('SARS2_Nprot', 'x0098a', 'A', '401'): {
+        ('SARS2_Nprot', 'Nprot-frag-x0098a', 'A', '401'): {
             'ground': 'Nprot-frag-x0098a_updated.pdb',
             'bound': 'Nprot-frag-x0098a_updated.pdb',
             'map': 'Nprot-frag-x0098a_event_crystallographic.ccp4'
         },
-        ('SARS2_Nprot', 'x0138a', 'A', '501'): {
+        ('SARS2_Nprot', 'Nprot-frag-x0138a', 'A', '501'): {
             'ground': 'Nprot-frag-x0138a_updated.pdb',
             'bound': 'Nprot-frag-x0138a_updated.pdb',
             'map': 'Nprot-frag-x0138a_event_crystallographic.ccp4'
         },
-        ('SARS2_Nprot', 'x0190a', 'A', '465'): {
+        ('SARS2_Nprot', 'Nprot-frag-x0190a', 'A', '465'): {
             'ground': 'Nprot-frag-x0190a_updated.pdb',
             'bound': 'Nprot-frag-x0190a_updated.pdb',
             'map': 'Nprot-frag-x0190a_event_crystallographic.ccp4'
         },
-        ('SARS2_Nprot', 'x0220a', 'A', '501'): {
+        ('SARS2_Nprot', 'Nprot-frag-x0220a', 'A', '501'): {
             'ground': 'Nprot-frag-x0220a_updated.pdb',
             'bound': 'Nprot-frag-x0220a_updated.pdb',
             'map': 'Nprot-frag-x0220a_event_crystallographic.ccp4'
         },
-        ('SARS2_Nprot', 'x0263a', 'A', '401'): {
+        ('SARS2_Nprot', 'Nprot-frag-x0263a', 'A', '401'): {
             'ground': 'Nprot-frag-x0263a_updated.pdb',
             'bound': 'Nprot-frag-x0263a_updated.pdb',
             'map': 'Nprot-frag-x0263a_event_crystallographic.ccp4'
