@@ -34,7 +34,7 @@ def get_waters(st, waters_pdb,  chain, res, ):
     
     return waters
 
-def map_sigma(xmap, sigma):
+def map_sigma(xmap, sigma, out_file):
     ccp4 = gemmi.read_ccp4_map(str(xmap))
     ccp4.setup(0.0)
     grid = ccp4.grid
@@ -44,6 +44,11 @@ def map_sigma(xmap, sigma):
     new_sigma = sigma * (non_zero_std / std)
 
     print(f'Stds : with zero vs without: {std} / {non_zero_std}. New Sigma: {round(float(new_sigma), 2)}. {np.sum(grid_array == 0.0)} / {grid_array.size} zeros')
+    
+    new_ccp4 = gemmi.Ccp4Map()
+    new_ccp4.grid = grid
+    new_ccp4.update_ccp4_header()
+    new_ccp4.write_ccp4_map(out_file)
     return new_sigma
 
 def findwaters(
@@ -65,6 +70,7 @@ def findwaters(
     st_desolv = remove_waters(st)
 
     # Map sigma
+    uncut_xmap = out_dir / f'uncut.ccp4'
     new_sigma = map_sigma(xmap, sigma)
 
     # Output the transformed file
@@ -77,7 +83,7 @@ def findwaters(
         p = subprocess.Popen(
             SCRIPT.format(
                 pdb_in_filename=desolv_pdb, 
-                map_file=xmap,
+                map_file=uncut_xmap,
                 waters_filename=waters_pdb, 
                 sigma_level=new_sigma,
                 min_dist_to_protein=min_dist, 

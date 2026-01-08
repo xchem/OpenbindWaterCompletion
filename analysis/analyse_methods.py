@@ -244,13 +244,13 @@ if __name__ == "__main__":
             'map': 'A0237a_event_crystallographic.ccp4'
         },
         ('A71EV2A', 'A0310a', 'A', '147'): {
-            'ground': 'A0310a.pdb',
-            'bound': 'A0310a.pdb',
+            'ground': 'A0310a_updated.pdb',
+            'bound': 'A0310a_updated.pdb',
             'map': 'A0310a_event_crystallographic.ccp4'
         },
         ('A71EV2A', 'A0526a', 'A', '147'): {
-            'ground': 'A0526a.pdb',
-            'bound': 'A0526a.pdb',
+            'ground': 'A0526a_updated.pdb',
+            'bound': 'A0526a_updated.pdb',
             'map': 'A0526a_event_crystallographic.ccp4'
         },
         ('CHIKV', 'c0281a', 'C', '304'): {
@@ -259,8 +259,8 @@ if __name__ == "__main__":
             'map': 'c0281a_event_crystallographic.ccp4'
         },
         ('CHIKV', 'c0289a', 'C', '401'): {
-            'ground': 'c0289a.pdb',
-            'bound': 'c0289a.pdb',
+            'ground': 'c0289a_updated.pdb',
+            'bound': 'c0289a_updated.pdb',
             'map': 'c0289a_event_crystallographic.ccp4'
         },
         ('CHIKV', 'c0294a', 'A', '401'): {
