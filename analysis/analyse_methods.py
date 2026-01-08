@@ -330,9 +330,9 @@ if __name__ == "__main__":
             'map': 'Nprot-frag-x0263a_event_crystallographic.ccp4'
         },
         ('DENV_NS5_RdRp', 'd0135a', 'A', '1608'): {
-            'ground': 'd0153a_updated.pdb',
-            'bound': 'd0153a_updated.pdb',
-            'map': 'd0153a_event_crystallographic.ccp4'
+            'ground': 'd0135a_updated.pdb',
+            'bound': 'd0135a_updated.pdb',
+            'map': 'd0135a_event_crystallographic.ccp4'
         },
         ('DENV_NS5_RdRp', 'd0153a', 'A', '1707'): {
             'ground': 'd0153a_updated.pdb',
@@ -340,19 +340,19 @@ if __name__ == "__main__":
             'map': 'd0153a_event_crystallographic.ccp4'
         },
         ('DENV_NS5_RdRp', 'd0162a', 'A', '1707'): {
-            'ground': 'd0153a_updated.pdb',
-            'bound': 'd0153a_updated.pdb',
-            'map': 'd0153a_event_crystallographic.ccp4'
+            'ground': 'd0162a_updated.pdb',
+            'bound': 'd0162a_updated.pdb',
+            'map': 'd0162a_event_crystallographic.ccp4'
         },
         ('DENV_NS5_RdRp', 'd0174a', 'A', '1608'): {
-            'ground': 'd0153a_updated.pdb',
-            'bound': 'd0153a_updated.pdb',
-            'map': 'd0153a_event_crystallographic.ccp4'
+            'ground': 'd0174a_updated.pdb',
+            'bound': 'd0174a_updated.pdb',
+            'map': 'd0174a_event_crystallographic.ccp4'
         },
         ('DENV_NS5_RdRp', 'd0176a', 'A', '1701'): {
-            'ground': 'd0153a_updated.pdb',
-            'bound': 'd0153a_updated.pdb',
-            'map': 'd0153a_event_crystallographic.ccp4'
+            'ground': 'd0176a_updated.pdb',
+            'bound': 'd0176a_updated.pdb',
+            'map': 'd0176a_event_crystallographic.ccp4'
         },
     }
 
