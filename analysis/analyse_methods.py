@@ -209,30 +209,30 @@ if __name__ == "__main__":
             'map': 'x5052a_event_crystallographic.ccp4'
         },
         ('NXT1', 'x5080a', 'B', '303'): {
-            'ground': 'x5080a.pdb',
-            'bound': 'x5080a.pdb',
+            'ground': 'x5080a_updated.pdb',
+            'bound': 'x5080a_updated.pdb',
             'map': 'x5080a_event_crystallographic.ccp4'
         },
-        ('A71EV2A', 'A0152b', 'A', '201'): {
-            'ground': 'A0152b.pdb',
-            'bound': 'A0152b.pdb',
-            'map': 'A0152b_event_crystallographic.ccp4'
-        },
-        ('A71EV2A', 'A0194a', 'A', '147'): {
-            'ground': 'A0194a.pdb',
-            'bound': 'A0194a.pdb',
-            'map': 'A0194a_event_crystallographic.ccp4'
-        },
+        # ('A71EV2A', 'A0152b', 'A', '201'): {
+        #     'ground': 'A0152b.pdb',
+        #     'bound': 'A0152b.pdb',
+        #     'map': 'A0152b_event_crystallographic.ccp4'
+        # },
+        # ('A71EV2A', 'A0194a', 'A', '147'): {
+        #     'ground': 'A0194a.pdb',
+        #     'bound': 'A0194a.pdb',
+        #     'map': 'A0194a_event_crystallographic.ccp4'
+        # },
         ('A71EV2A', 'A0202a', 'A', '147'): {
-            'ground': 'A0202a.pdb',
-            'bound': 'A0202a.pdb',
+            'ground': 'A0202a_updated.pdb',
+            'bound': 'A0202a_updated.pdb',
             'map': 'A0202a_event_crystallographic.ccp4'
         },        
-        ('A71EV2A', 'A0207a', 'A', '151'): {
-            'ground': 'A0207a.pdb',
-            'bound': 'A0207a.pdb',
-            'map': 'A0207a_event_crystallographic.ccp4'
-        },
+        # ('A71EV2A', 'A0207a', 'A', '151'): {
+        #     'ground': 'A0207a.pdb',
+        #     'bound': 'A0207a.pdb',
+        #     'map': 'A0207a_event_crystallographic.ccp4'
+        # },
         ('A71EV2A', 'A0228a', 'A', '147'): {
             'ground': 'A0228a.pdb',
             'bound': 'A0228a.pdb',
@@ -249,8 +249,8 @@ if __name__ == "__main__":
             'map': 'A0310a_event_crystallographic.ccp4'
         },
         ('A71EV2A', 'A0526a', 'A', '147'): {
-            'ground': 'A0526a.pdb',
-            'bound': 'A0526a.pdb',
+            'ground': 'A0526a_updated.pdb',
+            'bound': 'A0526a_updated.pdb',
             'map': 'A0526a_event_crystallographic.ccp4'
         },
         ('CHIKV', 'c0281a', 'C', '304'): {
