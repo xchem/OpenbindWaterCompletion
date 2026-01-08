@@ -53,7 +53,7 @@ def findwaters(
         chain, 
         res, 
         sigma=2.0, 
-        min_dist=1.4, 
+        min_dist=1.2, 
         max_dist=7.0,
         ):
     """
