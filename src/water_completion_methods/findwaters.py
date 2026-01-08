@@ -71,7 +71,7 @@ def findwaters(
 
     # Map sigma
     uncut_xmap = out_dir / f'uncut.ccp4'
-    new_sigma = map_sigma(xmap, sigma, out_file=)
+    new_sigma = map_sigma(xmap, sigma, uncut_xmap)
 
     # Output the transformed file
     desolv_pdb = out_dir / f'desolv.pdb'
