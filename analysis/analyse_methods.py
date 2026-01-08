@@ -77,7 +77,7 @@ def summarize_results(all_results, out_file):
             print(f'\t\tRecall: {round(ligand_recall, 2)}')
             print(f'\t\tPrecision: {round(ligand_precision, 2)}')
             print(f'\t\tNumber of water predictions: {round(num_waters, 2)}')
-            missing_waters = [water_id for water_id, water_class in water_classes.items() if water_class == 0]
+            missing_waters = [f'{water_id[0]/water_id[1]}' for water_id, water_class in water_classes.items() if water_class == 0]
             print(f'\t\Missing Waters: {missing_waters}')
 
             if len(missing_waters) == 0:
