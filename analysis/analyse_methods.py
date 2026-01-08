@@ -249,8 +249,8 @@ if __name__ == "__main__":
             'map': 'A0310a_event_crystallographic.ccp4'
         },
         ('A71EV2A', 'A0526a', 'A', '147'): {
-            'ground': 'A0526a_updated.pdb',
-            'bound': 'A0526a_updated.pdb',
+            'ground': 'A0526a.pdb',
+            'bound': 'A0526a.pdb',
             'map': 'A0526a_event_crystallographic.ccp4'
         },
         ('CHIKV', 'c0281a', 'C', '304'): {
