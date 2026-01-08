@@ -48,7 +48,7 @@ def map_sigma(xmap, sigma, out_file):
     new_ccp4 = gemmi.Ccp4Map()
     new_ccp4.grid = grid
     new_ccp4.update_ccp4_header()
-    new_ccp4.write_ccp4_map(out_file)
+    new_ccp4.write_ccp4_map(str(out_file))
     return new_sigma
 
 def findwaters(
@@ -71,7 +71,7 @@ def findwaters(
 
     # Map sigma
     uncut_xmap = out_dir / f'uncut.ccp4'
-    new_sigma = map_sigma(xmap, sigma)
+    new_sigma = map_sigma(xmap, sigma, out_file=)
 
     # Output the transformed file
     desolv_pdb = out_dir / f'desolv.pdb'
