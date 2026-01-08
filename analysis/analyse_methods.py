@@ -273,6 +273,37 @@ if __name__ == "__main__":
             'bound': 'c0300a_updated.pdb',
             'map': 'c0300a_event_crystallographic.ccp4'
         },
+        ('CHIKV', 'c0822', 'A', '401'): {
+            'ground': 'c0822_updated.pdb',
+            'bound': 'c0822_updated.pdb',
+            'map': 'c0822_event_crystallographic.ccp4'
+        },
+        ('CHIKV', 'c0824', 'A', '401'): {
+            'ground': 'c0824_updated.pdb',
+            'bound': 'c0824_updated.pdb',
+            'map': 'c0824_event_crystallographic.ccp4'
+        },
+        ('CHIKV', 'c0888', 'C', '401'): {
+            'ground': 'c0888_updated.pdb',
+            'bound': 'c0888_updated.pdb',
+            'map': 'c0888_event_crystallographic.ccp4'
+        },
+        ('CHIKV', 'c0935', 'C', '401'): {
+            'ground': 'c0935_updated.pdb',
+            'bound': 'c0935_updated.pdb',
+            'map': 'c0935_event_crystallographic.ccp4'
+        },
+        ('CHIKV', 'c1188', 'C', '401'): {
+            'ground': 'c1188_updated.pdb',
+            'bound': 'c1188_updated.pdb',
+            'map': 'c1188_event_crystallographic.ccp4'
+        },
+
+        ('CHIKV', 'c1278', 'D', '401'): {
+            'ground': 'c1278_updated.pdb',
+            'bound': 'c1278_updated.pdb',
+            'map': 'c1278_event_crystallographic.ccp4'
+        },
 
 
 
