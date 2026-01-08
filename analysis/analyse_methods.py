@@ -234,13 +234,13 @@ if __name__ == "__main__":
         #     'map': 'A0207a_event_crystallographic.ccp4'
         # },
         ('A71EV2A', 'A0228a', 'A', '147'): {
-            'ground': 'A0228a.pdb',
-            'bound': 'A0228a.pdb',
+            'ground': 'A0228a_updated.pdb',
+            'bound': 'A0228a_updated.pdb',
             'map': 'A0228a_event_crystallographic.ccp4'
         },
         ('A71EV2A', 'A0237a', 'A', '151'): {
-            'ground': 'A0237a.pdb',
-            'bound': 'A0237a.pdb',
+            'ground': 'A0237a_updated.pdb',
+            'bound': 'A0237a_updated.pdb',
             'map': 'A0237a_event_crystallographic.ccp4'
         },
         ('A71EV2A', 'A0310a', 'A', '147'): {
