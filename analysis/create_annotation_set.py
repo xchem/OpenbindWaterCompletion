@@ -114,9 +114,9 @@ def process_hit(hit):
         waters = findwaters_multiple(
             hit['BoundStatePath'], 
             hit['EventMapPath'], 
+            Path(hit['DatasetDir']), 
             chain, 
             res, 
-            Path(hit['DatasetDir']), 
             sigmas=np.geomspace(5.0,0.5,num=21))
 
         # Make the mtz
@@ -144,7 +144,6 @@ def process_hit(hit):
   },
     except Exception as e:
         print(e)
-        raise Exception()
         return None
         ...
 
