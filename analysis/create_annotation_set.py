@@ -46,7 +46,7 @@ def get_mean_pos(res):
         pos = atom.pos
         poss.append([pos.x, pos.y, pos.z])
 
-    return np.mean(poss, axis=1)
+    return np.mean(poss, axis=0)
 
 def get_closest_ligand(bound_state_path, xyz):
     st = gemmi.read_structure(str(bound_state_path))
