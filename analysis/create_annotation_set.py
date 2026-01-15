@@ -116,7 +116,7 @@ def process_hit(hit):
             hit['EventMapPath'], 
             chain, 
             res, 
-            hit['DatasetDir'], 
+            Path(hit['DatasetDir']), 
             sigmas=np.geomspace(5.0,0.5,num=21))
 
         # Make the mtz
