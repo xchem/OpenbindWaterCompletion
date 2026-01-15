@@ -16,7 +16,7 @@ def get_high_confidence_hits(data_path):
         if not inspect_table_path.exists():
             print(f'Skipping dir: {pandda_dir}')
             continue
-        inspect_table = pd.read_csv()
+        inspect_table = pd.read_csv(inspect_table_path)
         for idx, row in inspect_table.iterrows():
             dtag, event_idx, bdc, x, y, z, confidence = row['dtag'], row['event_idx'], row['1-BDC'],row['x'],row['y'],row['z'], row['Ligand Confidence'] 
             if confidence != 'High':
