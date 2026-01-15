@@ -125,7 +125,6 @@ def process_hit(hit):
             hit['BoundStatePath'],
             hit['EventMTZPath'],
         )
-
         predicted_ligand_waters = get_predicted_ligand_waters(
                 hit['BoundStatePath'], 
                 waters,

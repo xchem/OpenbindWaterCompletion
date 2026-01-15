@@ -71,6 +71,10 @@ def get_predicted_ligand_waters(
                 threshold=5.0,
                 ):
     st = gemmi.read_structure(str(bound_state_path))
+    print(st)
+    print(chain)
+    print(res)
+    print(st[0])
 
     ligand_res = st[0][chain][res][0]
 
