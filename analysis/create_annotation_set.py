@@ -70,7 +70,10 @@ def get_closest_ligand(bound_state_path, xyz):
                         )
                     )
 
-    return min(distances, key=lambda _x: distances[_x])
+    if len(distances) == 0:
+        return None, None
+    else:
+        return min(distances, key=lambda _x: distances[_x])
 
     ...
 
@@ -102,6 +105,8 @@ def process_hit(hit):
 
         # Get the chain and res of closest ligand
         chain, res = get_closest_ligand(hit['BoundStatePath'], hit['xyz'])
+        if not chain:
+            return None
         print(chain, res)
 
         # Model structure waters
