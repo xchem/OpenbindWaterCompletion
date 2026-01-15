@@ -97,28 +97,33 @@ def make_event_mtz(event_map_path, structure_pdb, output_path):
 
 
 def process_hit(hit):
-    # Get an mtz from the waters and apply findwaters_multiple
+    try:
+        # Get an mtz from the waters and apply findwaters_multiple
 
-    # Get the chain and res of closest ligand
-    chain, res = get_closest_ligand(hit['BoundStatePath'], hit['xyz'])
-    print(chain, res)
+        # Get the chain and res of closest ligand
+        chain, res = get_closest_ligand(hit['BoundStatePath'], hit['xyz'])
+        print(chain, res)
 
-    # Model structure waters
-    # findwaters_multiple(
-    #     hit['BoundStatePath'], 
-    #     hit['EventMapPath'], 
-    #     chain, 
-    #     res, 
-    #     hit['DatasetDir'], 
-    #     sigmas=np.geomspace(5.0,0.5,num=21))
+        # Model structure waters
+        # findwaters_multiple(
+        #     hit['BoundStatePath'], 
+        #     hit['EventMapPath'], 
+        #     chain, 
+        #     res, 
+        #     hit['DatasetDir'], 
+        #     sigmas=np.geomspace(5.0,0.5,num=21))
 
-    # Make the mtz
-    # make_event_mtz(
-    #     hit['EventMapPath'],
-    #     hit['BoundStatePath'],
-    #     hit['EventMTZPath'],
-    # )
-    ...
+        # Make the mtz
+        # make_event_mtz(
+        #     hit['EventMapPath'],
+        #     hit['BoundStatePath'],
+        #     hit['EventMTZPath'],
+        # )
+        return hit
+    except Exception as e:
+        print(e)
+        return None
+        ...
 
 
 def output_input_yaml(hits, out_path):
@@ -139,11 +144,11 @@ def main(data_path, out_path):
         futures.append(
             delayed(process_hit)(high_confidence_hit)
         )
-    Parallel(n_jobs=-1)(f for f in futures)
-
+    results =Parallel(n_jobs=-1)(f for f in futures)
+    succesful_results = [r for r in results if r]
 
     # Create a input yaml for annotation
-    output_input_yaml(out_path)
+    output_input_yaml(succesful_results, out_path)
 
 
     ...
