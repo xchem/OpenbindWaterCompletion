@@ -138,7 +138,7 @@ def process_hit(hit):
             'pdb': hit['WaterBuildPath'],
             'xmap': hit['EventMTZPath'],
             'landmarks': {
-            j: [water[0], water[1]] for j, water in enumerate(predicted_ligand_waters)
+            j+1: [water[0], water[1]] for j, water in enumerate(predicted_ligand_waters)
             }
         }
     # except Exception as e:
@@ -148,10 +148,14 @@ def process_hit(hit):
 
 
 def output_input_yaml(hits, out_path):
-    input_yaml = {}
+    input_yaml = {
+        j+1: hit
+        for hit 
+        in enumerate(hits)
+    }
 
     with open(out_path, 'w') as f:
-        yaml.dump(hits, f, )
+        yaml.dump({}, f, )
 
 
 def main(data_path, out_path):
