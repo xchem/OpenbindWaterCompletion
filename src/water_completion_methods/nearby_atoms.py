@@ -2,8 +2,8 @@ import gemmi
 import numpy as np
 
 def get_nearby_atoms(reference, moving, threshold=5.0):
-    reference_atom_array = np.array(reference)
-    moving_atom_array = np.array(moving)
+    reference_atom_array = np.array(reference.values())
+    moving_atom_array = np.array(moving.values())
 
     distance_matrix = np.linalg.norm((reference_atom_array.reshape(1,-1,3)-moving_atom_array.reshape(-1,1,3)), axis=2)
 
@@ -86,7 +86,7 @@ def get_predicted_ligand_waters(
     ligand_atom_array = np.array(ligand_atoms)
 
     #
-    water_atoms = {str(j): pos for j, pos in enumerate(predicted_ligand_waters)}
+    water_atoms = {water_id: pos for water_id, pos in enumerate(predicted_ligand_waters)}
     water_atom_array = np.array(predicted_ligand_waters)
 
     #

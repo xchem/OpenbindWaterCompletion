@@ -24,13 +24,13 @@ def get_waters(st, waters_pdb,  chain, res, ):
     # ligand_waters = get_ligand_waters(chain, res, water_st, )
 
     # return [x for x in ligand_waters.values()]
-    waters = []
+    waters = {}
     for _model in water_st:
         for _chain in _model:
             for _res in _chain:
                 for _atom in _res:
                     pos = _atom.pos
-                    waters.append([pos.x, pos.y, pos.z])
+                    waters[(_chain.name, str(_res.seqid.num))] = [pos.x, pos.y, pos.z]
     
     return waters
 
@@ -116,7 +116,7 @@ def write_waters(waters, tempalte_path, out_path):
 
     water_chain = gemmi.Chain('W')
 
-    for j, water in enumerate(waters):
+    for j, water_id in enumerate(waters):
         res = gemmi.Residue()
         res.name = 'HOH'
         res.seqid = gemmi.SeqId(f"{j}")
@@ -124,9 +124,9 @@ def write_waters(waters, tempalte_path, out_path):
         atom.name = 'O'
         atom.element = gemmi.Element('O')
         atom.pos = gemmi.Position(
-            water[0],
-            water[1],
-            water[2],
+            waters[water_id][0],
+            waters[water_id][1],
+            waters[water_id][2],
         )
         res.add_atom(atom)
         water_chain.add_residue(res)
@@ -145,7 +145,7 @@ def findwaters_multiple(
         min_dist=1.4, 
         max_dist=7.0,
         ):
-    waters = []
+    waters = {}
     for sigma in sigmas:
         new_waters = findwaters(
             structure,
@@ -162,11 +162,11 @@ def findwaters_multiple(
 
         if len(waters) != 0:
             nearby_waters = get_nearby_atoms(waters, new_waters, threshold=0.5)
-            for new_water, nearby in zip(new_waters, nearby_waters):
+            for new_water_id, nearby in zip(new_waters, nearby_waters):
                 if not nearby:
-                    waters.append(new_water)
+                    waters[new_water_id] = new_waters[new_water_id]
         else:
-            waters += new_waters
+            waters = new_waters
 
     # Write water structure
     write_waters(waters, structure, out_dir / f'findwaters_multiple_{len(sigmas)}.pdb')
