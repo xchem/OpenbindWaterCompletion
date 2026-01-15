@@ -148,10 +148,12 @@ def process_hit(hit):
 
 
 def output_input_yaml(hits, out_path):
+    output_order = np.random.permutation(len(hits))
+
     input_yaml = {
-        j+1: hit
-        for j, hit 
-        in enumerate(hits)
+        j+1: hits[j]
+        for j
+        in output_order
     }
 
     with open(out_path, 'w') as f:
