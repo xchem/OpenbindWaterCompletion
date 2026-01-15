@@ -25,16 +25,16 @@ def get_high_confidence_hits(data_path):
 
             high_confidence_hits.append(
                 {
-                    'System': pandda_dir.name,
-                    'Dtag': dtag,
-                    'EventIdx': event_idx,
-                    'DatasetDir': dataset_dir,
+                    'System': str(pandda_dir.name),
+                    'Dtag': str(dtag),
+                    'EventIdx': int(event_idx),
+                    'DatasetDir': str(dataset_dir),
                     'xyz': [x, y, z],
-                    'InitialStructurePath': dataset_dir / f'{dtag}-pandda-input.pdb',
-                    'BoundStatePath': dataset_dir / 'modelled_structures' / f'{dtag}-pandda-model.pdb',
-                    'WaterBuildPath': dataset_dir / f'findwaters_multiple_21.pdb',
-                    'EventMapPath': dataset_dir / f"{dtag}-event_{event_idx}_1-BDC_{bdc}_map.native.ccp4",
-                    'EventMTZPath': dataset_dir / f"{dtag}-event_{event_idx}_1-BDC_{bdc}_map.native.mtz", 
+                    'InitialStructurePath': str(dataset_dir / f'{dtag}-pandda-input.pdb'),
+                    'BoundStatePath': str(dataset_dir / 'modelled_structures' / f'{dtag}-pandda-model.pdb'),
+                    'WaterBuildPath': str(dataset_dir / f'findwaters_multiple_21.pdb'),
+                    'EventMapPath': str(dataset_dir / f"{dtag}-event_{event_idx}_1-BDC_{bdc}_map.native.ccp4"),
+                    'EventMTZPath': str(dataset_dir / f"{dtag}-event_{event_idx}_1-BDC_{bdc}_map.native.mtz"), 
                 }
             )
 
@@ -149,7 +149,7 @@ def main(data_path, out_path):
         futures.append(
             delayed(process_hit)(high_confidence_hit)
         )
-    results =Parallel(n_jobs=-1)(f for f in futures)
+    results = Parallel(n_jobs=-1)(f for f in futures)
     succesful_results = [r for r in results if r]
     print(f'Got {len(succesful_results)} out of {len(results)} jobs')
 
