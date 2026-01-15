@@ -134,17 +134,17 @@ def process_hit(hit):
                 )
         print(predicted_ligand_waters)
 
-        return None
         return {
             'dtag': hit['Dtag'],
             'pdb': hit['WaterBuildPath'],
             'xmap': hit['EventMTZPath'],
             'landmarks': {
-            j: water for j, water in enumerate(predicted_ligand_waters.values())
+            j: water for j, water in enumerate(predicted_ligand_waters)
     }
   },
     except Exception as e:
         print(e)
+        raise Exception()
         return None
         ...
 
