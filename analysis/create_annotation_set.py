@@ -151,7 +151,7 @@ def output_input_yaml(hits, out_path):
     output_order = np.random.permutation(len(hits))
 
     input_yaml = {
-        j+1: hits[j]
+        int(j)+1: hits[int(j)]
         for j
         in output_order
     }
