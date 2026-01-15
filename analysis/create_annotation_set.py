@@ -12,7 +12,11 @@ import yaml
 def get_high_confidence_hits(data_path):
     high_confidence_hits = []
     for pandda_dir in data_path.glob('*'):
-        inspect_table = pd.read_csv(pandda_dir / 'analyses' / 'pandda_inspect_events.csv')
+        inspect_table_path = pandda_dir / 'analyses' / 'pandda_inspect_events.csv'
+        if not inspect_table_path.exists():
+            print(f'Skipping dir: {pandda_dir}')
+            continue
+        inspect_table = pd.read_csv()
         for idx, row in inspect_table.iterrows():
             dtag, event_idx, bdc, x, y, z, confidence = row['dtag'], row['event_idx'], row['1-BDC'],row['x'],row['y'],row['z'], row['Ligand Confidence'] 
             if confidence != 'High':
