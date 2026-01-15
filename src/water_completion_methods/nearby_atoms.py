@@ -2,8 +2,8 @@ import gemmi
 import numpy as np
 
 def get_nearby_atoms(reference, moving, threshold=5.0):
-    reference_atom_array = np.array(reference.values())
-    moving_atom_array = np.array(moving.values())
+    reference_atom_array = np.array([x for x in reference.values()])
+    moving_atom_array = np.array([x for x in moving.values()])
     print(reference_atom_array)
     print(moving_atom_array)
 
