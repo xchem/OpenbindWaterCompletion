@@ -155,7 +155,7 @@ def output_input_yaml(hits, out_path):
     }
 
     with open(out_path, 'w') as f:
-        yaml.dump({}, f, )
+        yaml.dump(input_yaml, f, )
 
 
 def main(data_path, out_path):
