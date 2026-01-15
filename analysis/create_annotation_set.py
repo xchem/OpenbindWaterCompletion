@@ -150,7 +150,7 @@ def process_hit(hit):
 def output_input_yaml(hits, out_path):
     input_yaml = {
         j+1: hit
-        for hit 
+        for j, hit 
         in enumerate(hits)
     }
 
