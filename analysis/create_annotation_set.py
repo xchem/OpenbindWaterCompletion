@@ -57,7 +57,8 @@ def get_closest_ligand(bound_state_path, xyz):
             for res in chain:
                 if res.name == "LIG":
                     mean_pos = get_mean_pos(res)
-                    assert mean_pos.size == 3
+                    if mean_pos.size != 3:
+                        raise Exception(f'Mean pos array size should be 3, is {mean_pos.size}')
                     distances[(chain.name, res.seqid.num)] = np.linalg.norm(
                         np.array(
                             [
