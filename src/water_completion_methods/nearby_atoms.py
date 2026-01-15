@@ -97,8 +97,8 @@ def get_predicted_ligand_waters(
     ligand_atom_array = np.array(ligand_atoms)
 
     #
-    water_atoms = {water_id: pos for water_id, pos in enumerate(predicted_ligand_waters)}
-    water_atom_array = np.array(predicted_ligand_waters)
+    water_atoms = {water_id: pos for water_id, pos in predicted_ligand_waters.items()}
+    water_atom_array = np.array([x for x in predicted_ligand_waters.values()])
 
     #
     distance_matrix = np.linalg.norm((ligand_atom_array.reshape(1,-1,3)-water_atom_array.reshape(-1,1,3)), axis=2)
