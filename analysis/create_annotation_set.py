@@ -151,6 +151,7 @@ def main(data_path, out_path):
         )
     results =Parallel(n_jobs=-1)(f for f in futures)
     succesful_results = [r for r in results if r]
+    print(f'Got {len(succesful_results)} out of {len(results)} jobs')
 
     # Create a input yaml for annotation
     output_input_yaml(succesful_results, out_path)
