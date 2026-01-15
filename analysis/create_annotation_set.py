@@ -140,8 +140,8 @@ def process_hit(hit):
             'xmap': hit['EventMTZPath'],
             'landmarks': {
             j: water for j, water in enumerate(predicted_ligand_waters)
-    }
-  },
+            }
+        }
     except Exception as e:
         print(e)
         return None
