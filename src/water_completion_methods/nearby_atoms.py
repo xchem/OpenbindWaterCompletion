@@ -6,6 +6,8 @@ def get_nearby_atoms(reference, moving, threshold=5.0):
     moving_atom_array = np.array([x for x in moving.values()])
     print(reference_atom_array)
     print(moving_atom_array)
+    print(reference_atom_array.shape)
+    print(moving_atom_array.shape)
 
     distance_matrix = np.linalg.norm((reference_atom_array.reshape(1,-1,3)-moving_atom_array.reshape(-1,1,3)), axis=2)
 
