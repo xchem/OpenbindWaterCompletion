@@ -76,7 +76,7 @@ def get_predicted_ligand_waters(
     print(res)
     print(st[0])
 
-    ligand_res = st[0][chain][res][0]
+    ligand_res = st[0][chain][str(res)][0]
 
     # Get the ligand atoms
     ligand_atoms = []
