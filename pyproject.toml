@@ -14,7 +14,8 @@ dependencies = [
     'numpy',
     'pandas',
     'pyyaml', 
-    'gemmi'
+    'gemmi',
+    'joblib'
 ] 
 dynamic = ["version"]
 license.file = "LICENSE"
