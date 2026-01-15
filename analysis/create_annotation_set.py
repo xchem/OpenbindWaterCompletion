@@ -101,7 +101,7 @@ def make_event_mtz(event_map_path, structure_pdb, output_path):
 
 
 def process_hit(hit):
-    try:
+    # try:
         # Get an mtz from the waters and apply findwaters_multiple
 
         # Get the chain and res of closest ligand
@@ -142,10 +142,10 @@ def process_hit(hit):
             j: water for j, water in enumerate(predicted_ligand_waters)
             }
         }
-    except Exception as e:
-        print(e)
-        return None
-        ...
+    # except Exception as e:
+    #     print(e)
+    #     return None
+    #     ...
 
 
 def output_input_yaml(hits, out_path):
@@ -170,6 +170,7 @@ def main(data_path, out_path):
         )
         break
     results = Parallel(n_jobs=-1)(f for f in futures)
+    print(results)
     succesful_results = [r for r in results if r]
     print(f'Got {len(succesful_results)} out of {len(results)} jobs')
 
