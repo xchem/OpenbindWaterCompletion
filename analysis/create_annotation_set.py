@@ -5,6 +5,7 @@ from water_completion_methods.findwaters import findwaters, findwaters_multiple
 import pandas as pd
 import numpy as np
 import gemmi
+from pathlib import Path
 import yaml
 
 
@@ -152,4 +153,4 @@ if __name__ == "__main__":
     args=parser.parse_args()
     print(f'Data Path: {args.data_path}')
     print(f'Out Path: {args.out_path}')
-    main(args.data_path, args.out_path)
+    main(Path(args.data_path), Path(args.out_path))
