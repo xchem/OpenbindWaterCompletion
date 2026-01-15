@@ -2,23 +2,30 @@ import gemmi
 import numpy as np
 
 def get_nearby_atoms(reference, moving, threshold=5.0):
-    reference_atom_array = np.array([x for x in reference.values()])
-    moving_atom_array = np.array([x for x in moving.values()])
-    print(reference_atom_array)
-    print(moving_atom_array)
-    print(reference_atom_array.shape)
-    print(moving_atom_array.shape)
+    try:
+        reference_atom_array = np.array([x for x in reference.values()])
+        moving_atom_array = np.array([x for x in moving.values()])
+        # print(reference_atom_array)
+        # print(moving_atom_array)
+        # print(reference_atom_array.shape)
+        # print(moving_atom_array.shape)
 
-    distance_matrix = np.linalg.norm((reference_atom_array.reshape(1,-1,3)-moving_atom_array.reshape(-1,1,3)), axis=2)
+        distance_matrix = np.linalg.norm((reference_atom_array.reshape(1,-1,3)-moving_atom_array.reshape(-1,1,3)), axis=2)
 
-    close = []
-    for water_atom_id, min_dist in zip(moving, np.min(distance_matrix, axis=1).flatten()):
-        # min_dist = min(distances)
-        if min_dist < threshold:
-            close.append(True)
-        else:
-            close.append(False)
-    return close
+        close = []
+        for water_atom_id, min_dist in zip(moving, np.min(distance_matrix, axis=1).flatten()):
+            # min_dist = min(distances)
+            if min_dist < threshold:
+                close.append(True)
+            else:
+                close.append(False)
+        return close
+    except Exception as e:
+        # print(reference_atom_array)
+        # print(moving_atom_array)
+        # print(reference_atom_array.shape)
+        # print(moving_atom_array.shape)        
+        raise Exception()
 
 def get_nearby_atoms_from_gemmi(reference, moving, threshold=5.0):
     reference_poss = [(pos.x,pos.y,pos.z) for pos in reference]
