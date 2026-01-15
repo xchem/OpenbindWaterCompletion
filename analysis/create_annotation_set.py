@@ -1,6 +1,7 @@
 import argparse
 
 from joblib import Parallel, delayed
+from water_completion_methods.nearby_atoms import get_predicted_ligand_waters
 from water_completion_methods.findwaters import findwaters, findwaters_multiple
 import pandas as pd
 import numpy as np
@@ -110,21 +111,38 @@ def process_hit(hit):
         print(chain, res)
 
         # Model structure waters
-        # findwaters_multiple(
-        #     hit['BoundStatePath'], 
-        #     hit['EventMapPath'], 
-        #     chain, 
-        #     res, 
-        #     hit['DatasetDir'], 
-        #     sigmas=np.geomspace(5.0,0.5,num=21))
+        waters = findwaters_multiple(
+            hit['BoundStatePath'], 
+            hit['EventMapPath'], 
+            chain, 
+            res, 
+            hit['DatasetDir'], 
+            sigmas=np.geomspace(5.0,0.5,num=21))
 
         # Make the mtz
-        # make_event_mtz(
-        #     hit['EventMapPath'],
-        #     hit['BoundStatePath'],
-        #     hit['EventMTZPath'],
-        # )
-        return hit
+        make_event_mtz(
+            hit['EventMapPath'],
+            hit['BoundStatePath'],
+            hit['EventMTZPath'],
+        )
+
+        predicted_ligand_waters = get_predicted_ligand_waters(
+                hit['BoundStatePath'], 
+                waters,
+                chain,
+                res,
+                )
+        print(predicted_ligand_waters)
+
+        return None
+        return {
+            'dtag': hit['Dtag'],
+            'pdb': hit['WaterBuildPath'],
+            'xmap': hit['EventMTZPath'],
+            'landmarks': {
+            j: water for j, water in enumerate(predicted_ligand_waters.values())
+    }
+  },
     except Exception as e:
         print(e)
         return None
@@ -132,6 +150,8 @@ def process_hit(hit):
 
 
 def output_input_yaml(hits, out_path):
+    input_yaml = {}
+
     with open(out_path, 'w') as f:
         yaml.dump(hits, f, )
 
@@ -149,6 +169,7 @@ def main(data_path, out_path):
         futures.append(
             delayed(process_hit)(high_confidence_hit)
         )
+        break
     results = Parallel(n_jobs=-1)(f for f in futures)
     succesful_results = [r for r in results if r]
     print(f'Got {len(succesful_results)} out of {len(results)} jobs')

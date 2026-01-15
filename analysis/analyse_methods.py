@@ -7,7 +7,7 @@ import pandas as pd
 
 from water_completion_methods.base_structure_waters import base_structure_waters
 from water_completion_methods.findwaters import findwaters, findwaters_multiple
-from water_completion_methods.nearby_atoms import get_ligand_waters
+from water_completion_methods.nearby_atoms import get_ligand_waters, get_predicted_ligand_waters
 
 def get_water_data(data_path, data, threshold=3.0):
     water_data = {}
@@ -103,38 +103,7 @@ def summarize_results(all_results, out_file):
     print(result_df)
     ...
 
-def get_predicted_ligand_waters(
-                bound_state_path, 
-                predicted_ligand_waters,
-                chain,
-                res,
-                threshold=5.0,
-                ):
-    st = gemmi.read_structure(str(bound_state_path))
 
-    ligand_res = st[0][chain][res][0]
-
-    # Get the ligand atoms
-    ligand_atoms = []
-    for atom in ligand_res:
-        pos = atom.pos 
-        ligand_atoms.append([pos.x, pos.y, pos.z])
-    ligand_atom_array = np.array(ligand_atoms)
-
-    #
-    water_atoms = {str(j): pos for j, pos in enumerate(predicted_ligand_waters)}
-    water_atom_array = np.array(predicted_ligand_waters)
-
-    #
-    distance_matrix = np.linalg.norm((ligand_atom_array.reshape(1,-1,3)-water_atom_array.reshape(-1,1,3)), axis=2)
-
-    ligand_waters = {}
-    for water_atom_id, distances in zip(water_atoms, distance_matrix):
-        min_dist = min(distances)
-        if min_dist < threshold:
-            ligand_waters[water_atom_id] = water_atoms[water_atom_id]
-
-    return ligand_waters
 
 def process_dataset(method, bound_structure, xmap, out_dir, chain, res, waters, threshold):
     predicted_waters = method(bound_structure, xmap, out_dir, chain, res, )

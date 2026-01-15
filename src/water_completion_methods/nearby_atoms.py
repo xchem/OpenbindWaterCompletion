@@ -62,3 +62,36 @@ def get_ligand_waters(chain, res, st, threshold=5.0):
     # print(ligand_waters)
 
     return ligand_waters
+
+def get_predicted_ligand_waters(
+                bound_state_path, 
+                predicted_ligand_waters,
+                chain,
+                res,
+                threshold=5.0,
+                ):
+    st = gemmi.read_structure(str(bound_state_path))
+
+    ligand_res = st[0][chain][res][0]
+
+    # Get the ligand atoms
+    ligand_atoms = []
+    for atom in ligand_res:
+        pos = atom.pos 
+        ligand_atoms.append([pos.x, pos.y, pos.z])
+    ligand_atom_array = np.array(ligand_atoms)
+
+    #
+    water_atoms = {str(j): pos for j, pos in enumerate(predicted_ligand_waters)}
+    water_atom_array = np.array(predicted_ligand_waters)
+
+    #
+    distance_matrix = np.linalg.norm((ligand_atom_array.reshape(1,-1,3)-water_atom_array.reshape(-1,1,3)), axis=2)
+
+    ligand_waters = {}
+    for water_atom_id, distances in zip(water_atoms, distance_matrix):
+        min_dist = min(distances)
+        if min_dist < threshold:
+            ligand_waters[water_atom_id] = water_atoms[water_atom_id]
+
+    return ligand_waters
