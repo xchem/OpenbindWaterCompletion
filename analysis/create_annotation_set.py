@@ -141,7 +141,7 @@ def main(data_path, out_path):
 
     # Get the high confidence hits, with paths to relevant data for water building
     high_confidence_hits = get_high_confidence_hits(data_path)
-    print(high_confidence_hits)
+    # print(high_confidence_hits)
 
     # Dispatch jobs to do water fitting and create mtzs
     futures = []
