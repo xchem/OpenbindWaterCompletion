@@ -174,7 +174,7 @@ def main(data_path, out_path):
         futures.append(
             delayed(process_hit)(high_confidence_hit)
         )
-    results = Parallel(n_jobs=-1)(f for f in futures)
+    results = Parallel(n_jobs=-1, verbose=50)(f for f in futures)
     print(results)
     succesful_results = [r for r in results if r]
     print(f'Got {len(succesful_results)} out of {len(results)} jobs')
