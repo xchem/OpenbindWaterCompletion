@@ -132,7 +132,7 @@ def process_hit(hit):
                 chain,
                 res,
                 )
-        print(predicted_ligand_waters)
+        # print(predicted_ligand_waters)
 
         return {
             'dtag': hit['Dtag'],

@@ -43,7 +43,7 @@ def map_sigma(xmap, sigma, out_file):
     non_zero_std = np.std(grid_array[(grid_array < -0.05) | (grid_array > 0.05) ])
     new_sigma = sigma * (non_zero_std / std)
 
-    print(f'Stds : with zero vs without: {std} / {non_zero_std}. New Sigma: {round(float(new_sigma), 2)}. {np.sum(grid_array == 0.0)} / {grid_array.size} zeros')
+    # print(f'Stds : with zero vs without: {std} / {non_zero_std}. New Sigma: {round(float(new_sigma), 2)}. {np.sum(grid_array == 0.0)} / {grid_array.size} zeros')
     
     new_ccp4 = gemmi.Ccp4Map()
     new_ccp4.grid = grid
@@ -94,8 +94,8 @@ def findwaters(
             stderr=subprocess.PIPE,
             )
         stdout, stderr = p.communicate()
-        print(f'STDOUT: {stdout}')
-        print(f'STDERR: {stderr}')
+        # print(f'STDOUT: {stdout}')
+        # print(f'STDERR: {stderr}')
 
     # Get ligand waters from output file
     waters = get_waters(st, waters_pdb, chain, res,)
@@ -104,7 +104,7 @@ def findwaters(
     # os.remove(waters_pdb)
     # os.remove(desolv_pdb)
 
-    print(f'Got {len(waters)} waters')
+    # print(f'Got {len(waters)} waters')
     return waters
 
 
