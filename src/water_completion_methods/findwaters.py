@@ -145,14 +145,14 @@ def findwaters_multiple(
         min_dist=1.4, 
         max_dist=7.0,
         ):
-    waters = {}
-    new_waters = get_waters(
+    # waters = {}
+    waters = get_waters(
         gemmi.read_structure(str(structure)), 
         str(structure), 
         chain, 
         res,
         )
-    nearby_waters = get_nearby_atoms(waters, new_waters, threshold=0.5)
+    # nearby_waters = get_nearby_atoms(waters, new_waters, threshold=0.5)
 
 
     for sigma in sigmas:
