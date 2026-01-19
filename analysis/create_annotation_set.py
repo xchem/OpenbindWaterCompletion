@@ -118,7 +118,8 @@ def process_hit(hit):
             Path(hit['DatasetDir']), 
             chain, 
             res, 
-            sigmas=np.geomspace(5.0,0.5,num=21))
+            sigmas=np.geomspace(5.0,0.5,num=21),
+            )
 
         # Make the mtz
         make_event_mtz(
@@ -139,7 +140,7 @@ def process_hit(hit):
             'pdb': hit['WaterBuildPath'],
             'xmap': hit['EventMTZPath'],
             'landmarks': {
-            j+1: [water[0], water[1]] for j, water in enumerate(predicted_ligand_waters)
+                j+1: [water[0], water[1]] for j, water in enumerate(predicted_ligand_waters)
             }
         }
     except Exception as e:
