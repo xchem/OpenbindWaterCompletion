@@ -28,7 +28,7 @@ def get_waters(st, waters_pdb,  chain, res, ):
     for _model in water_st:
         for _chain in _model:
             for _res in _chain:
-                if res.name != "HOH":
+                if _res.name != "HOH":
                     continue
                 for _atom in _res:
                     pos = _atom.pos
