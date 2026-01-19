@@ -12,7 +12,7 @@ from pathlib import Path
 import yaml
 
 def output_input_yaml(hits, out_path):
-    output_order = np.random.permutation(hits.keys())
+    output_order = np.random.permutation([x for x in hits.keys()])
     print(output_order)
 
     input_yaml = {
