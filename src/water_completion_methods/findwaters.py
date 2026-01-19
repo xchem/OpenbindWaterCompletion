@@ -28,6 +28,8 @@ def get_waters(st, waters_pdb,  chain, res, ):
     for _model in water_st:
         for _chain in _model:
             for _res in _chain:
+                if res.name != "HOH":
+                    continue
                 for _atom in _res:
                     pos = _atom.pos
                     waters[(_chain.name, str(_res.seqid.num))] = [pos.x, pos.y, pos.z]
