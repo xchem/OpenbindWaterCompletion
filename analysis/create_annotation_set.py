@@ -112,36 +112,36 @@ def process_hit(hit):
         print(chain, res)
 
         # Model structure waters
-        waters = findwaters_multiple(
-            hit['BoundStatePath'], 
-            hit['EventMapPath'], 
-            Path(hit['DatasetDir']), 
-            chain, 
-            res, 
-            sigmas=np.geomspace(5.0,0.5,num=21))
+        # waters = findwaters_multiple(
+        #     hit['BoundStatePath'], 
+        #     hit['EventMapPath'], 
+        #     Path(hit['DatasetDir']), 
+        #     chain, 
+        #     res, 
+        #     sigmas=np.geomspace(5.0,0.5,num=21))
 
         # Make the mtz
         make_event_mtz(
             hit['EventMapPath'],
-            hit['BoundStatePath'],
+            hit['InitialStructurePath'],
             hit['EventMTZPath'],
         )
-        predicted_ligand_waters = get_predicted_ligand_waters(
-                hit['BoundStatePath'], 
-                waters,
-                chain,
-                res,
-                )
+        # predicted_ligand_waters = get_predicted_ligand_waters(
+        #         hit['BoundStatePath'], 
+        #         waters,
+        #         chain,
+        #         res,
+        #         )
         # print(predicted_ligand_waters)
 
-        return {
-            'dtag': hit['Dtag'],
-            'pdb': hit['WaterBuildPath'],
-            'xmap': hit['EventMTZPath'],
-            'landmarks': {
-            j+1: [water[0], water[1]] for j, water in enumerate(predicted_ligand_waters)
-            }
-        }
+        # return {
+        #     'dtag': hit['Dtag'],
+        #     'pdb': hit['WaterBuildPath'],
+        #     'xmap': hit['EventMTZPath'],
+        #     'landmarks': {
+        #     j+1: [water[0], water[1]] for j, water in enumerate(predicted_ligand_waters)
+        #     }
+        # }
     except Exception as e:
         print(e)
         return None
@@ -180,7 +180,7 @@ def main(data_path, out_path):
     print(f'Got {len(succesful_results)} out of {len(results)} jobs')
 
     # Create a input yaml for annotation
-    output_input_yaml(succesful_results, out_path)
+    # output_input_yaml(succesful_results, out_path)
 
 
     ...
