@@ -16,7 +16,7 @@ def output_input_yaml(hits, out_path):
     print(output_order)
 
     input_yaml = {
-        int(j)+1: hits[int(j)]
+        int(j): hits[int(j)]
         for j
         in output_order
     }
