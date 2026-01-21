@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 import gemmi
 from pathlib import Path
+import json
 import yaml
 
 def output_input_yaml(hits, out_path):
@@ -22,7 +23,7 @@ def output_input_yaml(hits, out_path):
     }
 
     with open(out_path, 'w') as f:
-        yaml.dump(input_yaml, f, )
+        json.dump(input_yaml, f, )
 
 def main(data_path, out_path):
     with open(data_path, 'r') as f:
