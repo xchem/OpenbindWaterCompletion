@@ -118,10 +118,10 @@ def write_waters(waters, tempalte_path, out_path):
 
     water_chain = gemmi.Chain('W')
 
-    for j, water_id in enumerate(waters):
+    for water_id in waters:
         res = gemmi.Residue()
         res.name = 'HOH'
-        res.seqid = gemmi.SeqId(f"{j}")
+        res.seqid = gemmi.SeqId(f"{water_id}")
         atom = gemmi.Atom()
         atom.name = 'O'
         atom.element = gemmi.Element('O')
@@ -133,7 +133,7 @@ def write_waters(waters, tempalte_path, out_path):
         res.add_atom(atom)
         water_chain.add_residue(res)
 
-    desolv[0].add_chain(water_chain, unique_name=True)
+    desolv[0].add_chain(water_chain, )
     desolv.write_minimal_pdb(str(out_path))
 
 
@@ -148,15 +148,16 @@ def findwaters_multiple(
         max_dist=7.0,
         ):
     # waters = {}
-    waters = get_waters(
+    original_waters = get_waters(
         gemmi.read_structure(str(structure)), 
         str(structure), 
         chain, 
         res,
         )
     # nearby_waters = get_nearby_atoms(waters, new_waters, threshold=0.5)
+    waters = {j: original_waters[water_id] for j, water_id in enumerate(original_waters)}
 
-
+    j = len(waters)
     for sigma in sigmas:
         new_waters = findwaters(
             structure,
@@ -175,7 +176,8 @@ def findwaters_multiple(
             nearby_waters = get_nearby_atoms(waters, new_waters, threshold=0.5)
             for new_water_id, nearby in zip(new_waters, nearby_waters):
                 if not nearby:
-                    waters[new_water_id] = new_waters[new_water_id]
+                    waters[j] = new_waters[new_water_id]
+                    j += 1
         else:
             waters = new_waters
 
