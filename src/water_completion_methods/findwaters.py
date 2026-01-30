@@ -180,8 +180,8 @@ def findwaters_multiple(
                 if not nearby:
                     waters[j] = new_waters[new_water_id]
                     j += 1
-        else:
-            waters = new_waters
+        # else:
+        #     waters = new_waters
 
     # Write water structure
     write_waters(waters, structure, out_dir / f'findwaters_multiple_{len(sigmas)}.pdb')
