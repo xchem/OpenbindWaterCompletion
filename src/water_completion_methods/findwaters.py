@@ -117,25 +117,27 @@ def write_waters(waters, tempalte_path, out_path):
     desolv = remove_waters(st)
 
     water_chain = gemmi.Chain('W')
+    try: 
+        for water_id in waters:
+            res = gemmi.Residue()
+            res.name = 'HOH'
+            res.seqid = gemmi.SeqId(f"{water_id}")
+            atom = gemmi.Atom()
+            atom.name = 'O'
+            atom.element = gemmi.Element('O')
+            atom.pos = gemmi.Position(
+                waters[water_id][0],
+                waters[water_id][1],
+                waters[water_id][2],
+            )
+            res.add_atom(atom)
+            water_chain.add_residue(res)
 
-    for water_id in waters:
-        res = gemmi.Residue()
-        res.name = 'HOH'
-        res.seqid = gemmi.SeqId(f"{water_id}")
-        atom = gemmi.Atom()
-        atom.name = 'O'
-        atom.element = gemmi.Element('O')
-        atom.pos = gemmi.Position(
-            waters[water_id][0],
-            waters[water_id][1],
-            waters[water_id][2],
-        )
-        res.add_atom(atom)
-        water_chain.add_residue(res)
-
-    desolv[0].add_chain(water_chain, )
-    desolv.write_minimal_pdb(str(out_path))
-
+        desolv[0].add_chain(water_chain, )
+        desolv.write_minimal_pdb(str(out_path))
+    except:
+        print(water_id)
+        raise Exception
 
 def findwaters_multiple(
         structure, 
