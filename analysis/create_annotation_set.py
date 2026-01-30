@@ -140,7 +140,7 @@ def process_hit(hit):
         'pdb': hit['WaterBuildPath'],
         'xmap': hit['EventMTZPath'],
         'landmarks': {
-            j+1: [water[0], water[1]] for j, water in enumerate(predicted_ligand_waters)
+            j+1: ['W', water] for j, water in enumerate(predicted_ligand_waters)
         }
     }
     # except Exception as e:
