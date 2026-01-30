@@ -102,51 +102,50 @@ def make_event_mtz(event_map_path, structure_pdb, output_path):
 
 def process_hit(hit):
     print(f'Processing Hit: {hit["Dtag"]} {hit["EventIdx"]}')
-    try:
+    # try:
     # Get an mtz from the waters and apply findwaters_multiple
 
-        # Get the chain and res of closest ligand
-        chain, res = get_closest_ligand(hit['BoundStatePath'], hit['xyz'])
-        if not chain:
-            return None
-        print(chain, res)
-
-        # Model structure waters
-        waters = findwaters_multiple(
-            hit['BoundStatePath'], 
-            hit['EventMapPath'], 
-            Path(hit['DatasetDir']), 
-            chain, 
-            res, 
-            sigmas=np.geomspace(5.0,0.5,num=21),
-            )
-
-        # Make the mtz
-        make_event_mtz(
-            hit['EventMapPath'],
-            hit['InitialStructurePath'],
-            hit['EventMTZPath'],
-        )
-        predicted_ligand_waters = get_predicted_ligand_waters(
-                hit['BoundStatePath'], 
-                waters,
-                chain,
-                res,
-                )
-        print(predicted_ligand_waters)
-
-        return {
-            'dtag': hit['Dtag'],
-            'pdb': hit['WaterBuildPath'],
-            'xmap': hit['EventMTZPath'],
-            'landmarks': {
-                j+1: [water[0], water[1]] for j, water in enumerate(predicted_ligand_waters)
-            }
-        }
-    except Exception as e:
-        print(e)
+    # Get the chain and res of closest ligand
+    chain, res = get_closest_ligand(hit['BoundStatePath'], hit['xyz'])
+    if not chain:
         return None
-        ...
+    print(chain, res)
+
+    # Model structure waters
+    waters = findwaters_multiple(
+        hit['BoundStatePath'], 
+        hit['EventMapPath'], 
+        Path(hit['DatasetDir']), 
+        chain, 
+        res, 
+        sigmas=np.geomspace(5.0,0.5,num=21),
+        )
+
+    # Make the mtz
+    make_event_mtz(
+        hit['EventMapPath'],
+        hit['InitialStructurePath'],
+        hit['EventMTZPath'],
+    )
+    predicted_ligand_waters = get_predicted_ligand_waters(
+            hit['BoundStatePath'], 
+            waters,
+            chain,
+            res,
+            )
+    print(predicted_ligand_waters)
+
+    return {
+        'dtag': hit['Dtag'],
+        'pdb': hit['WaterBuildPath'],
+        'xmap': hit['EventMTZPath'],
+        'landmarks': {
+            j+1: [water[0], water[1]] for j, water in enumerate(predicted_ligand_waters)
+        }
+    }
+    # except Exception as e:
+        # print(e)
+        # return None
 
 
 def output_input_yaml(hits, out_path):
